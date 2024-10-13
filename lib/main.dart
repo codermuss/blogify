@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
       initialRoute: Routes.startupView,
       onGenerateRoute: StackedRouter().onGenerateRoute,
       navigatorKey: StackedService.navigatorKey,
-      theme: AppThemes.lightTheme,
+      theme: AppThemes.darkTheme,
       navigatorObservers: [
         StackedService.routeObserver,
       ],
