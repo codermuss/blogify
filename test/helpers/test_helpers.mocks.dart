@@ -7,6 +7,7 @@ import 'dart:async' as _i5;
 import 'dart:ui' as _i6;
 
 import 'package:blogify/services/app/theme_service.dart' as _i7;
+import 'package:blogify/ui/themes/theme_modes.dart' as _i8;
 import 'package:flutter/material.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i3;
@@ -675,4 +676,71 @@ class MockDialogService extends _i1.Mock implements _i2.DialogService {
 /// A class which mocks [ThemeService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockThemeService extends _i1.Mock implements _i7.ThemeService {}
+class MockThemeService extends _i1.Mock implements _i7.ThemeService {
+  @override
+  _i8.ThemeMode get themeMode => (super.noSuchMethod(
+        Invocation.getter(#themeMode),
+        returnValue: _i8.ThemeMode.light,
+        returnValueForMissingStub: _i8.ThemeMode.light,
+      ) as _i8.ThemeMode);
+
+  @override
+  bool get isDarkMode => (super.noSuchMethod(
+        Invocation.getter(#isDarkMode),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  int get listenersCount => (super.noSuchMethod(
+        Invocation.getter(#listenersCount),
+        returnValue: 0,
+        returnValueForMissingStub: 0,
+      ) as int);
+
+  @override
+  void toggleTheme() => super.noSuchMethod(
+        Invocation.method(
+          #toggleTheme,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void listenToReactiveValues(List<dynamic>? reactiveValues) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #listenToReactiveValues,
+          [reactiveValues],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void addListener(void Function()? listener) => super.noSuchMethod(
+        Invocation.method(
+          #addListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void removeListener(void Function()? listener) => super.noSuchMethod(
+        Invocation.method(
+          #removeListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void notifyListeners() => super.noSuchMethod(
+        Invocation.method(
+          #notifyListeners,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+}
