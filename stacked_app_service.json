@@ -1,0 +1,5 @@
+{
+    "line_length": 180,
+    "services_path": "services/app",
+    "test_services_path": "services/app"
+}

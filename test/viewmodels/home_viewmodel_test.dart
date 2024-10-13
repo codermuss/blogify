@@ -23,8 +23,7 @@ void main() {
     });
 
     group('showBottomSheet -', () {
-      test('When called, should show custom bottom sheet using notice variant',
-          () {
+      test('When called, should show custom bottom sheet using notice variant', () {
         final bottomSheetService = getAndRegisterBottomSheetService();
 
         final model = getModel();

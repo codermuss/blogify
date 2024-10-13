@@ -2,6 +2,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:blogify/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:blogify/services/app/theme_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -10,13 +11,15 @@ import 'test_helpers.mocks.dart';
   MockSpec<NavigationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<BottomSheetService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
-  // @stacked-mock-spec
+  MockSpec<ThemeService>(onMissingStub: OnMissingStub.returnDefault),
+// @stacked-mock-spec
 ])
 void registerServices() {
   getAndRegisterNavigationService();
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
-  // @stacked-mock-register
+  getAndRegisterThemeService();
+// @stacked-mock-register
 }
 
 MockNavigationService getAndRegisterNavigationService() {
@@ -55,8 +58,7 @@ MockBottomSheetService getAndRegisterBottomSheetService<T>({
     customData: anyNamed('customData'),
     data: anyNamed('data'),
     description: anyNamed('description'),
-  )).thenAnswer((realInvocation) =>
-      Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
+  )).thenAnswer((realInvocation) => Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
 
   locator.registerSingleton<BottomSheetService>(service);
   return service;
@@ -69,6 +71,12 @@ MockDialogService getAndRegisterDialogService() {
   return service;
 }
 
+MockThemeService getAndRegisterThemeService() {
+  _removeRegistrationIfExists<ThemeService>();
+  final service = MockThemeService();
+  locator.registerSingleton<ThemeService>(service);
+  return service;
+}
 // @stacked-mock-create
 
 void _removeRegistrationIfExists<T extends Object>() {
