@@ -1,15 +1,22 @@
+import 'package:blogify/ui/themes/app_themes.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../ui/themes/theme_modes.dart';
 
 class ThemeService with ListenableServiceMixin {
   /// MARK: - [Properties]
-  ThemeMode _themeMode = ThemeMode.light;
+  AppThemeMode _themeMode = AppThemeMode.light;
 
   /// MARK: - [Getters & Setters]
 
-  ThemeMode get themeMode => _themeMode;
-  bool get isDarkMode => _themeMode == ThemeMode.dark;
+  AppThemeMode get themeMode => _themeMode;
+  ThemeData get theme => _themeMode == AppThemeMode.light
+      ? AppThemes.lightTheme
+      : _themeMode == AppThemeMode.brown
+          ? AppThemes.brownTheme
+          : AppThemes.darkTheme;
+  bool get isDarkMode => _themeMode == AppThemeMode.dark;
 
   /// MARK: - [Methods]
 
@@ -17,8 +24,8 @@ class ThemeService with ListenableServiceMixin {
     listenToReactiveValues([_themeMode]);
   }
 
-  void toggleTheme() {
-    _themeMode = _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+  void toggleTheme(AppThemeMode mode) {
+    _themeMode = mode;
     notifyListeners();
   }
 }

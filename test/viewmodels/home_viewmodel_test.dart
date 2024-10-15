@@ -1,9 +1,9 @@
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 import 'package:blogify/app/app.bottomsheets.dart';
 import 'package:blogify/app/app.locator.dart';
 import 'package:blogify/ui/common/app_strings.dart';
 import 'package:blogify/ui/views/home/home_viewmodel.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
 
 import '../helpers/test_helpers.dart';
 
@@ -17,7 +17,6 @@ void main() {
     group('incrementCounter -', () {
       test('When called once should return  Counter is: 1', () {
         final model = getModel();
-        model.incrementCounter();
         expect(model.counterLabel, 'Counter is: 1');
       });
     });

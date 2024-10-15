@@ -2,8 +2,9 @@ import 'package:blogify/app/app.bottomsheets.dart';
 import 'package:blogify/app/app.dialogs.dart';
 import 'package:blogify/app/app.locator.dart';
 import 'package:blogify/app/app.router.dart';
-import 'package:blogify/ui/themes/app_themes.dart';
+import 'package:blogify/main_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 Future<void> main() async {
@@ -19,14 +20,16 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: Routes.startupView,
-      onGenerateRoute: StackedRouter().onGenerateRoute,
-      navigatorKey: StackedService.navigatorKey,
-      theme: AppThemes.darkTheme,
-      navigatorObservers: [
-        StackedService.routeObserver,
-      ],
+    return ViewModelBuilder.reactive(
+      viewModelBuilder: () => MainViewmodel(),
+      builder: (context, viewModel, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: Routes.startupView,
+        onGenerateRoute: StackedRouter().onGenerateRoute,
+        navigatorKey: StackedService.navigatorKey,
+        theme: viewModel.theme,
+        navigatorObservers: [StackedService.routeObserver],
+      ),
     );
   }
 }
