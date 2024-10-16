@@ -1,8 +1,8 @@
+import 'package:blogify/ui/themes/theme_modes.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:blogify/ui/common/app_colors.dart';
-import 'package:blogify/ui/common/ui_helpers.dart';
 
+import '../../themes/app_theme_colors.dart';
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -14,64 +14,37 @@ class HomeView extends StackedView<HomeViewModel> {
     HomeViewModel viewModel,
     Widget? child,
   ) {
+    final appColors = Theme.of(context).extension<AppThemeColors>()!;
+
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                verticalSpaceLarge,
-                Column(
-                  children: [
-                    const Text(
-                      'Hello, STACKED!',
-                      style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    verticalSpaceMedium,
-                    MaterialButton(
-                      color: Colors.black,
-                      onPressed: viewModel.incrementCounter,
-                      child: Text(
-                        viewModel.counterLabel,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    MaterialButton(
-                      color: kcDarkGreyColor,
-                      onPressed: viewModel.showDialog,
-                      child: const Text(
-                        'Show Dialog',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    MaterialButton(
-                      color: kcDarkGreyColor,
-                      onPressed: viewModel.showBottomSheet,
-                      child: const Text(
-                        'Show Bottom Sheet',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-              ],
+      backgroundColor: appColors.conditionalColor,
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InkWell(
+              onTap: () => viewModel.changeTheme(AppThemeMode.light),
+              child: Text(
+                'Light',
+                style: TextStyle(color: appColors.primary),
+              ),
             ),
-          ),
+            InkWell(
+              onTap: () => viewModel.changeTheme(AppThemeMode.dark),
+              child: Text(
+                'Dark',
+                style: TextStyle(color: appColors.primary),
+              ),
+            ),
+            InkWell(
+              onTap: () => viewModel.changeTheme(AppThemeMode.brown),
+              child: Text(
+                'Brown',
+                style: TextStyle(color: appColors.primary),
+              ),
+            ),
+          ],
         ),
       ),
     );
