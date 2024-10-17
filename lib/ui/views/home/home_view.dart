@@ -2,6 +2,7 @@ import 'package:blogify/ui/themes/theme_modes.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../styles/spaces.dart';
 import '../../themes/app_theme_colors.dart';
 import 'home_viewmodel.dart';
 
@@ -37,6 +38,7 @@ class HomeView extends StackedView<HomeViewModel> {
                 style: TextStyle(color: appColors.primary),
               ),
             ),
+            Spaces.verticalSpaceMedium,
             InkWell(
               onTap: () => viewModel.changeTheme(AppThemeMode.brown),
               child: Text(
