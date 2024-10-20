@@ -1,10 +1,13 @@
 import 'package:blogify/extensions/context_extensions.dart';
 import 'package:blogify/extensions/widget_extensions.dart';
 import 'package:blogify/ui/components/buttons/app_button.dart';
+import 'package:blogify/ui/components/inputs/checkbox/checkbox_form_field.dart';
+import 'package:blogify/ui/components/inputs/checkbox/checkbox_form_item.dart';
 import 'package:blogify/ui/components/navigation/app_tab_bar.dart';
 import 'package:blogify/ui/components/navigation/tab_item.dart';
 import 'package:blogify/ui/themes/theme_modes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../components/inputs/app_text_field.dart';
@@ -116,7 +119,10 @@ class HomeView extends StackedView<HomeViewModel> {
                 TabItem(label: 'Posts', page: const Text('Posts Page')),
                 TabItem(label: 'Photos', page: const Text('Photos Page')),
               ],
+              height: 100.h,
             ).p8a,
+            Spaces.verticalSpaceMedium,
+            CheckboxFormField(context: context, checkboxFormItem: CheckboxFormItem(title: 'Text here'), isRequired: true)
           ],
         ),
       ),
