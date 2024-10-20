@@ -5,31 +5,21 @@ import 'brown_color_palette.dart';
 
 class BrownTheme {
   static final AppThemeColors colors = AppThemeColors(
-    primary: BrownColorPalette.greenPrimary,
-    onPrimary: BrownColorPalette.white,
-    secondary: BrownColorPalette.greenSecondary,
-    onSecondary: BrownColorPalette.white,
-    surface: BrownColorPalette.white, // Use for background-like areas
-    onSurface: BrownColorPalette.black, // Text on background-like areas
-    error: BrownColorPalette.red,
-    onError: BrownColorPalette.white,
-    conditionalColor: Colors.brown,
+    greenPrimary: BrownColorPalette.greenPrimary,
+    white: BrownColorPalette.white,
+    greenSecondary: BrownColorPalette.greenSecondary,
+    black: BrownColorPalette.black,
+    gray01: BrownColorPalette.gray01, // Use for background-like areas
+    gray02: BrownColorPalette.gray02, // Text on background-like areas
+    gray03: BrownColorPalette.gray03,
+    gray04: BrownColorPalette.gray04,
+    red: BrownColorPalette.red,
   );
 
   static ThemeData get themeData {
     return ThemeData(
-        colorScheme: ColorScheme(
-          brightness: Brightness.light,
-          primary: colors.primary,
-          onPrimary: colors.onPrimary,
-          secondary: colors.secondary,
-          onSecondary: colors.onSecondary,
-          surface: colors.surface,
-          onSurface: colors.onSurface,
-          error: colors.error,
-          onError: colors.onError,
-        ),
-        scaffoldBackgroundColor: colors.surface, // Set scaffold background to match surface
+        colorScheme: ColorScheme.fromSeed(seedColor: colors.greenPrimary),
+        scaffoldBackgroundColor: colors.gray01, // Set scaffold background to match surface
         extensions: <ThemeExtension<AppThemeColors>>[colors]);
   }
 }
