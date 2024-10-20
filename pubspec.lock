@@ -338,6 +338,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  i_toast:
+    dependency: "direct main"
+    description:
+      name: i_toast
+      sha256: f3ed1f965c625a95f12e49dcd6804cdca93d3173d26c4773d0ba3753673d0b9f
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
   intl:
     dependency: transitive
     description:

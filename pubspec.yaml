@@ -18,6 +18,7 @@ dependencies:
 
   # Util
   easy_localization: ^3.0.7
+  i_toast: ^0.0.6
   # Network
   dio: ^5.7.0
   pretty_dio_logger: ^1.4.0
