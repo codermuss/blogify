@@ -53,7 +53,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
             ),
             Spaces.verticalSpaceMedium,
             AppButton.primary(context: context, label: 'Sign Up', onPressed: () {}),
-            TextButton(onPressed: () {}, child: const Text('Forgot your password?'))
+            TextButton(onPressed: () {}, child: const Text('Forgot your password?')),
           ],
         ).p16h,
       ),
