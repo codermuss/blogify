@@ -1,3 +1,10 @@
 {
-    "hello":"Merhaba!"
+    "singUp":"Kayıt Ol",
+    "singIn":"Giriş Yap",
+    "name":"Ad",
+    "email":"Email",
+    "password":"Parola",
+    "forgotYourPassword":"Şifreni mi unuttun?",
+    "back":"Geri",
+    "show":"Göster"
 }

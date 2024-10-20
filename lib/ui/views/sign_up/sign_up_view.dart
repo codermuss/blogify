@@ -1,4 +1,6 @@
 import 'package:blogify/extensions/widget_extensions.dart';
+import 'package:blogify/localization/locale_keys.g.dart';
+import 'package:blogify/localization/locales.dart';
 import 'package:blogify/ui/components/buttons/app_button.dart';
 import 'package:blogify/ui/components/inputs/app_text_field.dart';
 import 'package:blogify/ui/components/inputs/checkbox/checkbox_form_field.dart';
@@ -6,6 +8,8 @@ import 'package:blogify/ui/components/inputs/checkbox/checkbox_form_item.dart';
 import 'package:blogify/ui/styles/spaces.dart';
 import 'package:blogify/ui/widgets/common/base_app_bar/base_app_bar.dart';
 import 'package:blogify/ui/widgets/common/base_view_skeleton/base_view_skeleton.dart';
+import 'package:blogify/ui/widgets/common/locale_text/locale_text.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -22,8 +26,15 @@ class SignUpView extends StackedView<SignUpViewModel> {
   ) {
     return BaseViewSkeleton(
       appBar: BaseAppBar(
-        title: 'Sign Up',
-        actions: [TextButton(onPressed: () {}, child: const Text('Login'))],
+        title: LocaleKeys.singUp,
+        actions: [
+          TextButton(
+            onPressed: () {},
+            child: LocaleText(
+              LocaleKeys.singIn,
+            ),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -32,17 +43,17 @@ class SignUpView extends StackedView<SignUpViewModel> {
             Spaces.verticalSpaceMedium,
             AppTextFormField(
               controller: TextEditingController(),
-              hintText: 'Name',
+              hintText: LocaleKeys.name,
             ),
             AppTextFormField(
               controller: TextEditingController(),
-              hintText: 'Email',
+              hintText: LocaleKeys.email,
             ),
             AppTextFormField(
               controller: TextEditingController(),
-              hintText: 'Password',
+              hintText: LocaleKeys.password,
               obscureText: true,
-              suffix: TextButton(onPressed: () {}, child: const Text('Show')),
+              suffix: TextButton(onPressed: () {}, child: LocaleText(LocaleKeys.show)),
             ),
             Spaces.verticalSpaceMedium,
             CheckboxFormField(
@@ -53,7 +64,13 @@ class SignUpView extends StackedView<SignUpViewModel> {
             ),
             Spaces.verticalSpaceMedium,
             AppButton.primary(context: context, label: 'Sign Up', onPressed: () {}),
-            TextButton(onPressed: () {}, child: const Text('Forgot your password?')),
+            TextButton(onPressed: () {}, child: LocaleText(LocaleKeys.forgotYourPassword)),
+            AppButton.primary(
+                context: context,
+                label: LocaleKeys.name.tr(),
+                onPressed: () async {
+                  await context.setLocale(context.locale == Locales.tr.locale ? const Locale('en') : const Locale('tr'));
+                }),
           ],
         ).p16h,
       ),

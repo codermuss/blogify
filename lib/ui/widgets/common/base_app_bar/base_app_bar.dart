@@ -1,4 +1,6 @@
+import 'package:blogify/localization/locale_keys.g.dart';
 import 'package:blogify/ui/styles/paddings.dart';
+import 'package:blogify/ui/widgets/common/locale_text/locale_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -42,7 +44,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
                         await onBack?.call();
                         Navigator.pop(context);
                       },
-                      icon: const Text('Back'),
+                      icon: LocaleText(LocaleKeys.back),
                     )
                   : Container(margin: Paddings.p8a),
               ...trailing ?? [],
@@ -54,7 +56,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
         Expanded(
           flex: 2,
           child: Center(
-            child: Text(
+            child: LocaleText(
               title ?? "",
               style: AppTextStyles.headline1,
             ),
@@ -65,11 +67,8 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
         if (actions != null)
           Expanded(
             flex: 1,
-            child: Padding(
-              padding: Paddings.p8h,
-              child: Row(
-                children: actions!,
-              ),
+            child: Row(
+              children: actions!,
             ),
           )
       ],

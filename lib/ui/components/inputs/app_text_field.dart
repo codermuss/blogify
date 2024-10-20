@@ -1,4 +1,5 @@
 import 'package:blogify/extensions/context_extensions.dart';
+import 'package:blogify/extensions/string_extensions.dart';
 import 'package:blogify/ui/styles/paddings.dart';
 import 'package:blogify/ui/styles/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -200,9 +201,9 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
               decoration: InputDecoration(
                 fillColor: context.palette.gray01,
                 filled: true,
-                labelText: widget.labelText,
+                labelText: widget.labelText?.locale,
                 labelStyle: widget.labelStyle,
-                hintText: widget.hintText,
+                hintText: widget.hintText?.locale,
                 hintStyle: AppTextStyles.footNote1.copyWith(color: context.palette.gray03),
                 suffixIcon: widget.suffix,
                 prefixIcon: widget.prefix,

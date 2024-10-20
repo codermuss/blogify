@@ -1,3 +1,10 @@
 {
-    "hello":"Hello!"
+    "singUp":"Sign Up",
+    "singIn":"Sign In",
+    "name":"Name",
+    "email":"Email",
+    "password":"Password",
+    "forgotYourPassword":"Forgot your password?",
+    "back":"Back",
+    "show":"Show"
 }
