@@ -5,31 +5,21 @@ import '../app_theme_colors.dart';
 
 class DarkTheme {
   static final AppThemeColors colors = AppThemeColors(
-    primary: DarkColorPalette.greenPrimary,
-    onPrimary: DarkColorPalette.white,
-    secondary: DarkColorPalette.greenSecondary,
-    onSecondary: DarkColorPalette.white,
-    surface: DarkColorPalette.white, // Use for background-like areas
-    onSurface: DarkColorPalette.black, // Text on background-like areas
-    error: DarkColorPalette.red,
-    onError: DarkColorPalette.white,
-    conditionalColor: Colors.black,
+    greenPrimary: DarkColorPalette.greenPrimary,
+    white: DarkColorPalette.white,
+    greenSecondary: DarkColorPalette.greenSecondary,
+    black: DarkColorPalette.black,
+    gray01: DarkColorPalette.gray01, // Use for background-like areas
+    gray02: DarkColorPalette.gray02, // Text on background-like areas
+    gray03: DarkColorPalette.gray03,
+    gray04: DarkColorPalette.gray04,
+    red: DarkColorPalette.red,
   );
 
   static ThemeData get themeData {
     return ThemeData(
-        colorScheme: ColorScheme(
-          brightness: Brightness.light,
-          primary: colors.primary,
-          onPrimary: colors.onPrimary,
-          secondary: colors.secondary,
-          onSecondary: colors.onSecondary,
-          surface: colors.surface,
-          onSurface: colors.onSurface,
-          error: colors.error,
-          onError: colors.onError,
-        ),
-        scaffoldBackgroundColor: colors.surface, // Set scaffold background to match surface
+        colorScheme: const ColorScheme.dark(),
+        scaffoldBackgroundColor: colors.gray01, // Set scaffold background to match surface
         extensions: <ThemeExtension<AppThemeColors>>[colors]);
   }
 }

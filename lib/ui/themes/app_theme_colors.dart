@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 
 class AppThemeColors extends ThemeExtension<AppThemeColors> {
-  final Color primary;
-  final Color onPrimary;
-  final Color secondary;
-  final Color onSecondary;
-  final Color surface;
-  final Color onSurface;
-  final Color error;
-  final Color onError;
-  final Color conditionalColor;
+  final Color white;
+  final Color black;
+  final Color gray01;
+  final Color gray02;
+  final Color gray03;
+  final Color gray04;
+  final Color greenPrimary;
+  final Color greenSecondary;
+  final Color red;
 
   AppThemeColors({
-    required this.primary,
-    required this.onPrimary,
-    required this.secondary,
-    required this.onSecondary,
-    required this.surface,
-    required this.onSurface,
-    required this.error,
-    required this.onError,
-    required this.conditionalColor,
+    required this.greenPrimary,
+    required this.white,
+    required this.greenSecondary,
+    required this.black,
+    required this.gray01,
+    required this.gray02,
+    required this.gray03,
+    required this.gray04,
+    required this.red,
   });
 
   @override
@@ -37,15 +37,15 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
       Color? onError,
       Color? conditionalColor}) {
     return AppThemeColors(
-      primary: primary ?? this.primary,
-      onPrimary: onPrimary ?? this.onPrimary,
-      secondary: secondary ?? this.secondary,
-      onSecondary: onSecondary ?? this.onSecondary,
-      surface: surface ?? this.surface,
-      onSurface: onSurface ?? this.onSurface,
-      error: error ?? this.error,
-      onError: onError ?? this.onError,
-      conditionalColor: conditionalColor ?? this.conditionalColor,
+      greenPrimary: primary ?? greenPrimary,
+      white: onPrimary ?? white,
+      greenSecondary: secondary ?? greenSecondary,
+      black: onSecondary ?? black,
+      gray01: surface ?? gray01,
+      gray02: onSurface ?? gray02,
+      gray03: error ?? gray03,
+      gray04: onError ?? gray04,
+      red: conditionalColor ?? red,
     );
   }
 
@@ -53,15 +53,15 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
   AppThemeColors lerp(ThemeExtension<AppThemeColors>? other, double t) {
     if (other is! AppThemeColors) return this;
     return AppThemeColors(
-      primary: Color.lerp(primary, other.primary, t)!,
-      onPrimary: Color.lerp(onPrimary, other.onPrimary, t)!,
-      secondary: Color.lerp(secondary, other.secondary, t)!,
-      onSecondary: Color.lerp(onSecondary, other.onSecondary, t)!,
-      surface: Color.lerp(surface, other.surface, t)!,
-      onSurface: Color.lerp(onSurface, other.onSurface, t)!,
-      error: Color.lerp(error, other.error, t)!,
-      onError: Color.lerp(onError, other.onError, t)!,
-      conditionalColor: Color.lerp(conditionalColor, other.conditionalColor, t)!,
+      greenPrimary: Color.lerp(greenPrimary, other.greenPrimary, t)!,
+      white: Color.lerp(white, other.white, t)!,
+      greenSecondary: Color.lerp(greenSecondary, other.greenSecondary, t)!,
+      black: Color.lerp(black, other.black, t)!,
+      gray01: Color.lerp(gray01, other.gray01, t)!,
+      gray02: Color.lerp(gray02, other.gray02, t)!,
+      gray03: Color.lerp(gray03, other.gray03, t)!,
+      gray04: Color.lerp(gray04, other.gray04, t)!,
+      red: Color.lerp(red, other.red, t)!,
     );
   }
 }
