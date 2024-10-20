@@ -36,7 +36,8 @@ class _FakeThemeData_0 extends _i1.SmartFake implements _i2.ThemeData {
         );
 
   @override
-  String toString({_i2.DiagnosticLevel? minLevel = _i2.DiagnosticLevel.info}) => super.toString();
+  String toString({_i2.DiagnosticLevel? minLevel = _i2.DiagnosticLevel.info}) =>
+      super.toString();
 }
 
 /// A class which mocks [NavigationService].
@@ -70,7 +71,8 @@ class MockNavigationService extends _i1.Mock implements _i3.NavigationService {
       ) as String);
 
   @override
-  _i2.GlobalKey<_i2.NavigatorState>? nestedNavigationKey(int? index) => (super.noSuchMethod(
+  _i2.GlobalKey<_i2.NavigatorState>? nestedNavigationKey(int? index) =>
+      (super.noSuchMethod(
         Invocation.method(
           #nestedNavigationKey,
           [index],
@@ -402,9 +404,11 @@ class MockNavigationService extends _i1.Mock implements _i3.NavigationService {
 /// A class which mocks [BottomSheetService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockBottomSheetService extends _i1.Mock implements _i3.BottomSheetService {
+class MockBottomSheetService extends _i1.Mock
+    implements _i3.BottomSheetService {
   @override
-  void setCustomSheetBuilders(Map<dynamic, _i3.SheetBuilder>? builders) => super.noSuchMethod(
+  void setCustomSheetBuilders(Map<dynamic, _i3.SheetBuilder>? builders) =>
+      super.noSuchMethod(
         Invocation.method(
           #setCustomSheetBuilders,
           [builders],
@@ -447,7 +451,8 @@ class MockBottomSheetService extends _i1.Mock implements _i3.BottomSheetService 
           },
         ),
         returnValue: _i5.Future<_i3.SheetResponse<dynamic>?>.value(),
-        returnValueForMissingStub: _i5.Future<_i3.SheetResponse<dynamic>?>.value(),
+        returnValueForMissingStub:
+            _i5.Future<_i3.SheetResponse<dynamic>?>.value(),
       ) as _i5.Future<_i3.SheetResponse<dynamic>?>);
 
   @override
@@ -513,7 +518,8 @@ class MockBottomSheetService extends _i1.Mock implements _i3.BottomSheetService 
       ) as _i5.Future<_i3.SheetResponse<T>?>);
 
   @override
-  void completeSheet(_i3.SheetResponse<dynamic>? response) => super.noSuchMethod(
+  void completeSheet(_i3.SheetResponse<dynamic>? response) =>
+      super.noSuchMethod(
         Invocation.method(
           #completeSheet,
           [response],
@@ -527,7 +533,9 @@ class MockBottomSheetService extends _i1.Mock implements _i3.BottomSheetService 
 /// See the documentation for Mockito's code generation for more information.
 class MockDialogService extends _i1.Mock implements _i3.DialogService {
   @override
-  void registerCustomDialogBuilders(Map<dynamic, _i3.DialogBuilder>? builders) => super.noSuchMethod(
+  void registerCustomDialogBuilders(
+          Map<dynamic, _i3.DialogBuilder>? builders) =>
+      super.noSuchMethod(
         Invocation.method(
           #registerCustomDialogBuilders,
           [builders],
@@ -583,7 +591,8 @@ class MockDialogService extends _i1.Mock implements _i3.DialogService {
           },
         ),
         returnValue: _i5.Future<_i3.DialogResponse<dynamic>?>.value(),
-        returnValueForMissingStub: _i5.Future<_i3.DialogResponse<dynamic>?>.value(),
+        returnValueForMissingStub:
+            _i5.Future<_i3.DialogResponse<dynamic>?>.value(),
       ) as _i5.Future<_i3.DialogResponse<dynamic>?>);
 
   @override
@@ -663,11 +672,13 @@ class MockDialogService extends _i1.Mock implements _i3.DialogService {
           },
         ),
         returnValue: _i5.Future<_i3.DialogResponse<dynamic>?>.value(),
-        returnValueForMissingStub: _i5.Future<_i3.DialogResponse<dynamic>?>.value(),
+        returnValueForMissingStub:
+            _i5.Future<_i3.DialogResponse<dynamic>?>.value(),
       ) as _i5.Future<_i3.DialogResponse<dynamic>?>);
 
   @override
-  void completeDialog(_i3.DialogResponse<dynamic>? response) => super.noSuchMethod(
+  void completeDialog(_i3.DialogResponse<dynamic>? response) =>
+      super.noSuchMethod(
         Invocation.method(
           #completeDialog,
           [response],
@@ -724,7 +735,8 @@ class MockThemeService extends _i1.Mock implements _i7.ThemeService {
       );
 
   @override
-  void listenToReactiveValues(List<dynamic>? reactiveValues) => super.noSuchMethod(
+  void listenToReactiveValues(List<dynamic>? reactiveValues) =>
+      super.noSuchMethod(
         Invocation.method(
           #listenToReactiveValues,
           [reactiveValues],
