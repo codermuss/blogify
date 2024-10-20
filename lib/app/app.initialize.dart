@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:blogify/app/app.bottomsheets.dart';
+import 'package:blogify/app/app.custom.locator.dart';
 import 'package:blogify/app/app.dialogs.dart';
 import 'package:blogify/app/app.locator.dart';
 import 'package:blogify/localization/app_localization.dart';
@@ -29,6 +30,7 @@ final class AppInitialize {
         SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge),
       ],
     );
+    setupCustomLocator();
     setupDialogUi();
     setupBottomSheetUi();
     runApp(AppLocalization(child: const MainApp()));

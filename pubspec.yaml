@@ -17,6 +17,9 @@ dependencies:
 
   # Util
   easy_localization: ^3.0.7
+  # Network
+  dio: ^5.7.0
+  pretty_dio_logger: ^1.4.0
 
 dev_dependencies:
   build_runner: ^2.4.5
