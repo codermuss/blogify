@@ -6,6 +6,7 @@
 import 'dart:async' as _i5;
 import 'dart:ui' as _i6;
 
+import 'package:blogify/services/api/onboarding_api_service.dart' as _i9;
 import 'package:blogify/services/app/theme_service.dart' as _i7;
 import 'package:blogify/ui/themes/theme_modes.dart' as _i8;
 import 'package:flutter/material.dart' as _i2;
@@ -771,3 +772,9 @@ class MockThemeService extends _i1.Mock implements _i7.ThemeService {
         returnValueForMissingStub: null,
       );
 }
+
+/// A class which mocks [OnboardingApiService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockOnboardingApiService extends _i1.Mock
+    implements _i9.OnboardingApiService {}

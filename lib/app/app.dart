@@ -7,6 +7,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:blogify/services/app/theme_service.dart';
 import 'package:blogify/ui/views/sign_up/sign_up_view.dart';
 import 'package:blogify/ui/views/onboarding/onboarding_view.dart';
+import 'package:blogify/services/api/onboarding_api_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -22,6 +23,7 @@ import 'package:blogify/ui/views/onboarding/onboarding_view.dart';
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: ThemeService),
+    LazySingleton(classType: OnboardingApiService),
 // @stacked-service
   ],
   bottomsheets: [

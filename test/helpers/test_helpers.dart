@@ -4,6 +4,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import 'package:blogify/services/api/onboarding_api_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -13,6 +14,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<BottomSheetService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<ThemeService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<OnboardingApiService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -20,6 +22,7 @@ void registerServices() {
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
   getAndRegisterThemeService();
+  getAndRegisterOnboardingApiService();
 // @stacked-mock-register
 }
 
@@ -79,6 +82,12 @@ MockThemeService getAndRegisterThemeService() {
   return service;
 }
 
+MockOnboardingApiService getAndRegisterOnboardingApiService() {
+  _removeRegistrationIfExists<OnboardingApiService>();
+  final service = MockOnboardingApiService();
+  locator.registerSingleton<OnboardingApiService>(service);
+  return service;
+}
 // @stacked-mock-create
 
 void _removeRegistrationIfExists<T extends Object>() {
