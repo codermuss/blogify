@@ -6,6 +6,7 @@ import 'package:blogify/ui/components/inputs/checkbox/checkbox_form_item.dart';
 import 'package:blogify/ui/components/navigation/app_tab_bar.dart';
 import 'package:blogify/ui/components/navigation/tab_item.dart';
 import 'package:blogify/ui/themes/theme_modes.dart';
+import 'package:blogify/ui/widgets/common/content_block_small/content_block_small.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
@@ -122,7 +123,10 @@ class HomeView extends StackedView<HomeViewModel> {
               height: 100.h,
             ).p8a,
             Spaces.verticalSpaceMedium,
-            CheckboxFormField(context: context, checkboxFormItem: CheckboxFormItem(title: 'Text here'), isRequired: true)
+            CheckboxFormField(context: context, checkboxFormItem: CheckboxFormItem(title: 'Text here'), isRequired: true),
+            Spaces.verticalSpaceMedium,
+            const ContentBlockSmall(
+                imageUrl: 'https://picsum.photos/200/300', title: 'Header', subTitle: 'Hell want to use your yacht, and I dont want this thing smelling like fish.', time: '8m ago')
           ],
         ),
       ),
