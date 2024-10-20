@@ -35,7 +35,7 @@ final class DioHttpClient extends INetworkService with DioHttpClientMixin {
   @override
   Future<BaseResponse<K>> fetch<T, K>({
     required String path,
-    required K Function(Map<String, dynamic> json) fromJson,
+    required dynamic Function(Map<String, dynamic> json) fromJson,
     BaseRequest? data,
   }) async {
     try {
@@ -57,7 +57,7 @@ final class DioHttpClient extends INetworkService with DioHttpClientMixin {
   @override
   Future<BaseResponse<K>> send<T, K>({
     required String path,
-    required K Function(Map<String, dynamic> json) fromJson,
+    required dynamic Function(Map<String, dynamic> json) fromJson,
     required BaseRequest? data,
     Options? options,
     CancelToken? cancelToken,
@@ -89,7 +89,7 @@ final class DioHttpClient extends INetworkService with DioHttpClientMixin {
   @override
   Future<BaseResponse<K>> update<T, K>({
     required String path,
-    required K Function(Map<String, dynamic> json) fromJson,
+    required dynamic Function(Map<String, dynamic> json) fromJson,
     BaseRequest? data,
     Options? options,
     CancelToken? cancelToken,
@@ -118,7 +118,7 @@ final class DioHttpClient extends INetworkService with DioHttpClientMixin {
   @override
   Future<BaseResponse<K>> delete<T, K>({
     required String path,
-    required K Function(Map<String, dynamic> json) fromJson,
+    required dynamic Function(Map<String, dynamic> json) fromJson,
     id,
     Options? options,
     CancelToken? cancelToken,

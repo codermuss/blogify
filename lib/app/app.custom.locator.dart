@@ -6,5 +6,5 @@ final _locator = StackedLocator.instance;
 
 void setupCustomLocator() {
 // Register dependencies
-  _locator.registerLazySingleton(() => DioHttpClient(baseUrl: 'localhost:8080/v1'));
+  _locator.registerLazySingleton(() => DioHttpClient(baseUrl: 'http://localhost:8080/v1'));
 }

@@ -13,7 +13,7 @@ class OnboardingView extends StackedView<OnboardingViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Container(
         padding: const EdgeInsets.only(left: 25.0, right: 25.0),
       ),
@@ -25,4 +25,9 @@ class OnboardingView extends StackedView<OnboardingViewModel> {
     BuildContext context,
   ) =>
       OnboardingViewModel();
+  @override
+  Future<void> onViewModelReady(OnboardingViewModel viewModel) async {
+    super.onViewModelReady(viewModel);
+    await viewModel.init();
+  }
 }
