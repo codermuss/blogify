@@ -125,8 +125,19 @@ class HomeView extends StackedView<HomeViewModel> {
             Spaces.verticalSpaceMedium,
             CheckboxFormField(context: context, checkboxFormItem: CheckboxFormItem(title: 'Text here'), isRequired: true),
             Spaces.verticalSpaceMedium,
-            const ContentBlockSmall(
-                imageUrl: 'https://picsum.photos/200/300', title: 'Header', subTitle: 'Hell want to use your yacht, and I dont want this thing smelling like fish.', time: '8m ago')
+            ContentBlockSmall.small(
+              imageUrl: 'https://picsum.photos/200/300',
+              title: 'Header',
+              subTitle: 'Hell want to use your yacht, and I dont want this thing smelling like fish.',
+              time: '8m ago',
+            ),
+            Spaces.verticalSpaceMedium,
+            ContentBlockSmall.large(
+              imageUrl: 'https://picsum.photos/200/300',
+              title: 'Header',
+              subTitle: 'Hell want to use your yacht, and I dont want this thing smelling like fish.',
+              time: '8m ago',
+            ),
           ],
         ),
       ),
