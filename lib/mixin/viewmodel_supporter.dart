@@ -13,6 +13,7 @@ mixin ViewModelSupporter on BaseViewModel {
   /// MARK: - [Dependencies]
   final DialogService dialogService = locator<DialogService>();
   final BottomSheetService bottomSheetService = locator<BottomSheetService>();
+  final NavigationService navigationService = locator<NavigationService>();
 
   /// MARK: - [Properties]
 

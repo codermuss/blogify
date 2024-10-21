@@ -6,5 +6,9 @@
     "password":"Password",
     "forgotYourPassword":"Forgot your password?",
     "back":"Back",
-    "show":"Show"
+    "show":"Show",
+    "somethingWentWrong":"Something went wrong. Please try again later.",
+    "thereIsNothingInhHere":"There is nothing in here!",
+    "next":"Next",
+    "getStarted":"Get Started"
 }

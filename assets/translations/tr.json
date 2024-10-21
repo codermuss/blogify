@@ -6,5 +6,9 @@
     "password":"Parola",
     "forgotYourPassword":"Şifreni mi unuttun?",
     "back":"Geri",
-    "show":"Göster"
+    "show":"Göster",
+    "somethingWentWrong":"Bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+    "thereIsNothingInhHere":"Burası boş görünüyor!",
+    "next":"İleri",
+    "getStarted":"Hemen Başla!"
 }
