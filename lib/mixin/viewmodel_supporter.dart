@@ -2,12 +2,14 @@ import 'dart:developer';
 
 import 'package:blogify/app/app.locator.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:i_toast/i_toast.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../models/base/base_response.dart';
 import '../models/base/view_state.dart';
+import '../utilities/constants/app_strings.dart';
 
 mixin ViewModelSupporter on BaseViewModel {
   /// MARK: - [Dependencies]
@@ -32,61 +34,58 @@ mixin ViewModelSupporter on BaseViewModel {
 
   /// MARK: - [Methods]
 
-  // Future<T?> showLoading<T>() {
-  //   BuildContext? context = StackedService.navigatorKey?.currentContext;
-  //   if (context) {
-  //     return showDialog<T>(
-  //       barrierDismissible: false,
-  //       context: StackedService.navigatorKey!.currentContext!,
-  //       routeSettings: const RouteSettings(name: AppStrings.loadingRoute),
-  //       builder: (BuildContext context) => Dialog(
-  //         backgroundColor: Colors.transparent,
-  //         elevation: .0,
-  //         child: PopScope(
-  //           canPop: false,
-  //           child: Center(
-  //             child: Assets.lottie.loading.show(height: 100.h),
-  //           ),
-  //         ),
-  //       ),
-  //     );
-  //   } else {
-  //     return Future.value(null);
-  //   }
-  // }
+  Future<T?> showLoading<T>() {
+    BuildContext? context = StackedService.navigatorKey?.currentContext;
+    if (context != null) {
+      return showDialog<T>(
+        barrierDismissible: false,
+        context: StackedService.navigatorKey!.currentContext!,
+        routeSettings: const RouteSettings(name: AppStrings.loadingRoute),
+        builder: (BuildContext context) => const Dialog(
+          backgroundColor: Colors.transparent,
+          elevation: .0,
+          child: PopScope(
+            canPop: false,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
+        ),
+      );
+    } else {
+      return Future.value(null);
+    }
+  }
 
-  // Future<T?> runLoadingFuture<T>(Future<BaseResponse<T>> Function() request) async {
-  //   showLoading();
-  //   try {
-  //     return tryCreateModel(await request());
-  //   } catch (e) {
-  //     'e:$e'.appLog;
-  //     rethrow;
-  //   } finally {
-  //     StackedService.navigatorKey?.currentState?.pop();
-  //   }
-  // }
+  Future<T?> runLoadingFuture<T>(Future<BaseResponse<T>> Function() request) async {
+    showLoading();
+    try {
+      return tryCreateModel(await request());
+    } catch (e) {
+      rethrow;
+    } finally {
+      StackedService.navigatorKey?.currentState?.pop();
+    }
+  }
 
-  // Future<void> runLoadingVoid(Future<void> Function() request) async {
-  //   showLoading();
-  //   try {
-  //     await request.call();
-  //   } catch (e) {
-  //     'e:$e'.appLog;
-  //     rethrow;
-  //   } finally {
-  //     StackedService.navigatorKey?.currentState?.pop();
-  //   }
-  // }
+  Future<void> runLoadingVoid(Future<void> Function() request) async {
+    showLoading();
+    try {
+      await request.call();
+    } catch (e) {
+      rethrow;
+    } finally {
+      StackedService.navigatorKey?.currentState?.pop();
+    }
+  }
 
-  // Future<T?> runFuture<T>(Future<BaseResponse<T>> busyFuture, {Object? busyObject, bool throwException = false}) async {
-  //   try {
-  //     return tryCreateModel(await busyFuture);
-  //   } catch (e) {
-  //     'e:$e'.appLog;
-  //     rethrow;
-  //   }
-  // }
+  Future<T?> runFuture<T>(Future<BaseResponse<T>> busyFuture, {Object? busyObject, bool throwException = false}) async {
+    try {
+      return tryCreateModel(await busyFuture);
+    } catch (e) {
+      rethrow;
+    }
+  }
 
   T? tryCreateModel<T>(BaseResponse<T> response) {
     T? model;
@@ -129,17 +128,17 @@ mixin ViewModelSupporter on BaseViewModel {
     return model;
   }
 
-  // void showToast({String? title, required String description, required ToastType toastType}) {
-  //   BuildContext? context = StackedService.navigatorKey?.currentContext;
-  //   if (context.isNotNull) {
-  //     IToastService.show(
-  //       context!,
-  //       title: title ?? toastType.title,
-  //       description: description,
-  //       toastType: toastType,
-  //     );
-  //   }
-  // }
+  void showToast({String? title, required String description, required ToastType toastType}) {
+    BuildContext? context = StackedService.navigatorKey?.currentContext;
+    if (context != null) {
+      IToastService.show(
+        context,
+        title: title ?? '',
+        description: description,
+        toastType: toastType,
+      );
+    }
+  }
 
   //* NOTE(mustafayilmazdev):  Returns the view state for a specific object.
   //* NOTE(mustafayilmazdev):  If the state is not found, it defaults to BusyState.
@@ -221,6 +220,12 @@ mixin ViewModelSupporter on BaseViewModel {
       setStateForObject(reference, ErrorState(error.toString()));
     }
     return model;
+  }
+
+  T? createRequestModel<T>(T? Function() validate) {
+    T? val = validate();
+    if (val == null) showToast(title: 'Warning', description: 'Check fields', toastType: ToastType.warning);
+    return val;
   }
 
   void clearStates() => _states.clear();

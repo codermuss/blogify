@@ -225,6 +225,10 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
                   borderRadius: widget.type == AppTextField.input ? Radiuses.b8r : BorderRadius.circular(100),
                   borderSide: BorderSide(color: context.palette.gray02),
                 ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: widget.type == AppTextField.input ? Radiuses.b8r : BorderRadius.circular(100),
+                  borderSide: BorderSide(color: context.palette.gray02),
+                ),
               ),
               maxLines: widget.obscureText ? 1 : widget.maxLines,
               maxLength: widget.maxLength,

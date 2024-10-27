@@ -1,15 +1,12 @@
 import 'package:blogify/extensions/widget_extensions.dart';
 import 'package:blogify/localization/locale_keys.g.dart';
-import 'package:blogify/localization/locales.dart';
 import 'package:blogify/ui/components/buttons/app_button.dart';
 import 'package:blogify/ui/components/inputs/app_text_field.dart';
-import 'package:blogify/ui/components/inputs/checkbox/checkbox_form_field.dart';
-import 'package:blogify/ui/components/inputs/checkbox/checkbox_form_item.dart';
 import 'package:blogify/ui/styles/spaces.dart';
 import 'package:blogify/ui/widgets/common/base_app_bar/base_app_bar.dart';
 import 'package:blogify/ui/widgets/common/base_view_skeleton/base_view_skeleton.dart';
 import 'package:blogify/ui/widgets/common/locale_text/locale_text.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:blogify/utilities/validators/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -37,42 +34,52 @@ class SignUpView extends StackedView<SignUpViewModel> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Spaces.verticalSpaceMedium,
-            AppTextFormField(
-              controller: TextEditingController(),
-              hintText: LocaleKeys.name,
-            ),
-            AppTextFormField(
-              controller: TextEditingController(),
-              hintText: LocaleKeys.email,
-            ),
-            AppTextFormField(
-              controller: TextEditingController(),
-              hintText: LocaleKeys.password,
-              obscureText: true,
-              suffix: TextButton(onPressed: () {}, child: LocaleText(LocaleKeys.show)),
-            ),
-            Spaces.verticalSpaceMedium,
-            CheckboxFormField(
-              context: context,
-              checkboxFormItem: CheckboxFormItem(
-                title: 'I would like to receive your newsletter and other promotional information.',
+        child: Form(
+          key: viewModel.formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Spaces.verticalSpaceMedium,
+              AppTextFormField(
+                controller: viewModel.usernameController,
+                hintText: LocaleKeys.username,
+                validator: Validators.validateuserame,
               ),
-            ),
-            Spaces.verticalSpaceMedium,
-            AppButton.primary(context: context, label: 'Sign Up', onPressed: () {}),
-            TextButton(onPressed: () {}, child: LocaleText(LocaleKeys.forgotYourPassword)),
-            AppButton.primary(
-                context: context,
-                label: LocaleKeys.name.tr(),
-                onPressed: () async {
-                  await context.setLocale(context.locale == Locales.tr.locale ? const Locale('en') : const Locale('tr'));
-                }),
-          ],
-        ).p16h,
+              AppTextFormField(
+                controller: viewModel.fullNameController,
+                hintText: LocaleKeys.fullName,
+                validator: Validators.validatefullName,
+              ),
+              AppTextFormField(
+                controller: viewModel.emailController,
+                hintText: LocaleKeys.email,
+                validator: Validators.validateEmail,
+              ),
+              AppTextFormField(
+                controller: viewModel.passwordController,
+                hintText: LocaleKeys.password,
+                validator: Validators.validatePassword,
+                obscureText: true,
+                suffix: TextButton(onPressed: () {}, child: LocaleText(LocaleKeys.show)),
+              ),
+              AppTextFormField(
+                controller: viewModel.confirmPasswordController,
+                hintText: LocaleKeys.password,
+                validator: (val) => Validators.validateConfirmPassword(val, viewModel.passwordController.text),
+                obscureText: true,
+                suffix: TextButton(onPressed: () {}, child: LocaleText(LocaleKeys.show)),
+              ),
+              AppTextFormField(
+                controller: viewModel.birthdateController,
+                hintText: LocaleKeys.birthdate,
+                validator: Validators.validateBirthdate,
+              ),
+              Spaces.verticalSpaceMedium,
+              AppButton.primary(context: context, label: 'Sign Up', onPressed: viewModel.signUp),
+              TextButton(onPressed: () {}, child: LocaleText(LocaleKeys.forgotYourPassword)),
+            ],
+          ).p16h,
+        ),
       ),
     );
   }
@@ -82,4 +89,9 @@ class SignUpView extends StackedView<SignUpViewModel> {
     BuildContext context,
   ) =>
       SignUpViewModel();
+  @override
+  void onDispose(SignUpViewModel viewModel) {
+    super.onDispose(viewModel);
+    viewModel.disposeForm();
+  }
 }

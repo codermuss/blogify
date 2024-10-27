@@ -1,16 +1,13 @@
-import 'package:blogify/app/app.locator.dart';
+import 'package:blogify/mixin/api_service_supporter.dart';
 import 'package:blogify/models/base/base_response.dart';
 import 'package:blogify/models/response/onboarding/onboarding.dart';
-import 'package:blogify/network/clients/dio/dio_http_client.dart';
+import 'package:blogify/utilities/constants/app_api_paths.dart';
 
-class OnboardingApiService {
-  /// MARK: - [Dependencies]
-  final DioHttpClient _dioHttpClient = locator<DioHttpClient>();
-
+class OnboardingApiService with ApiServiceSupporter {
   /// MARK: - [Methods]
   Future<BaseResponse<List<Onboarding>?>> getOnboarding() async {
-    final response = await _dioHttpClient.fetch<Onboarding, List<Onboarding>?>(
-      path: '/onboardings',
+    final response = await dioHttpClient.fetch<Onboarding, List<Onboarding>?>(
+      path: AppApiPaths.onboarding,
       fromJson: Onboarding.fromJson,
     );
     return response;

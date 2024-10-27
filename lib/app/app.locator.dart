@@ -11,6 +11,7 @@ import 'package:stacked_services/src/dialog/dialog_service.dart';
 import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
+import '../services/api/auth_api_service.dart';
 import '../services/api/onboarding_api_service.dart';
 import '../services/app/theme_service.dart';
 
@@ -21,7 +22,8 @@ Future<void> setupLocator({
   EnvironmentFilter? environmentFilter,
 }) async {
 // Register environments
-  locator.registerEnvironment(environment: environment, environmentFilter: environmentFilter);
+  locator.registerEnvironment(
+      environment: environment, environmentFilter: environmentFilter);
 
 // Register dependencies
   locator.registerLazySingleton(() => BottomSheetService());
@@ -29,4 +31,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => ThemeService());
   locator.registerLazySingleton(() => OnboardingApiService());
+  locator.registerLazySingleton(() => AuthApiService());
 }

@@ -10,5 +10,24 @@
     "somethingWentWrong":"Something went wrong. Please try again later.",
     "thereIsNothingInhHere":"There is nothing in here!",
     "next":"Next",
-    "getStarted":"Get Started"
+    "skip":"Skip",
+    "getStarted":"Get Started",
+    "birthdate":"Birthdate",
+    "validators": {
+        "usernameRequired":"Username is required",
+        "usernameLength":"Username must be at least 2 characters",
+        "nameRequired": "Name is required",
+        "nameLength": "Name must be at least 2 characters",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Enter a valid email",
+        "passwordRequired": "Password is required",
+        "passwordLength": "Password must be at least 6 characters",
+        "confirmPasswordRequired": "Confirm Password is required",
+        "passwordsDoNotMatch": "Passwords do not match",
+        "birthdateRequired": "Birthdate is required",
+        "birthdateInvalid": "Enter a valid birthdate (YYYY-MM-DD)",
+        "birthdateAge": "You must be at least 13 years old"
+    }
+       
+
 }

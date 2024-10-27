@@ -88,6 +88,17 @@ class OnboardingView extends StackedView<OnboardingViewModel> {
                 ],
               ),
             ),
+            Positioned(
+              top: 50.w,
+              right: 24.w,
+              child: TextButton(
+                onPressed: viewModel.onSkip,
+                child: LocaleText(
+                  LocaleKeys.skip,
+                  style: AppTextStyles.bodyText1.copyWith(color: context.palette.white),
+                ),
+              ),
+            ),
           ],
         ),
       ),

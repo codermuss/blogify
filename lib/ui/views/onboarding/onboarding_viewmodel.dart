@@ -63,4 +63,6 @@ class OnboardingViewModel extends BaseViewModel with ViewModelSupporter {
       nextPage();
     }
   }
+
+  void onSkip() => navigationService.clearStackAndShow(Routes.signUpView);
 }
