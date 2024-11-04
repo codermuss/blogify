@@ -1,8 +1,10 @@
 import 'package:blogify/mixin/viewmodel_supporter.dart';
+import 'package:blogify/models/response/auth/sign_in_response.dart';
 import 'package:blogify/ui/views/sign_in/sign_in_form_helper.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../app/app.locator.dart';
+import '../../../app/app.router.dart';
 import '../../../services/api/auth_api_service.dart';
 
 class SignInViewModel extends BaseViewModel with ViewModelSupporter, SignInFormHelper {
@@ -23,7 +25,10 @@ class SignInViewModel extends BaseViewModel with ViewModelSupporter, SignInFormH
   Future<void> signIn() async {
     final signInRequest = createRequestModel(validateForm);
     if (signInRequest != null) {
-      await runLoadingFuture(() => _authApiService.signIn(signInRequest));
+      SignInResponse? response = await runLoadingFuture<SignInResponse>(() => _authApiService.signIn(signInRequest));
+      if (response != null) {
+        navigationService.clearStackAndShow(Routes.homeView);
+      }
     }
   }
 }
