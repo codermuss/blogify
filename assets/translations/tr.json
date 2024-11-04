@@ -1,0 +1,39 @@
+{
+    "singUp":"Kayıt Ol",
+    "singIn":"Giriş Yap",
+    "username":"Kullanıcı Adı",
+    "fullName":"Ad Soyad",
+    "email":"Email",
+    "password":"Parola",
+    "forgotYourPassword":"Şifreni mi unuttun?",
+    "back":"Geri",
+    "show":"Göster",
+    "somethingWentWrong":"Bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+    "thereIsNothingInhHere":"Burası boş görünüyor!",
+    "next":"İleri",
+    "skip":"Geç",
+    "getStarted":"Hemen Başla!",
+    "birthdate":"Doğum günü",
+    "validators": {
+      "usernameRequired":"Kullanıcı Adı gereklidir",
+      "usernameLength":"Kullanıcı Adı en az 2 karakter olmalıdır",
+        "nameRequired": "Ad gereklidir",
+        "nameLength": "Ad en az 2 karakter olmalıdır",
+        "emailRequired": "E-posta gereklidir",
+        "emailInvalid": "Geçerli bir e-posta girin",
+        "passwordRequired": "Şifre gereklidir",
+        "passwordLength": "Şifre en az 6 karakter olmalıdır",
+        "confirmPasswordRequired": "Şifreyi Onaylamak gereklidir",
+        "passwordsDoNotMatch": "Şifreler eşleşmiyor",
+        "birthdateRequired": "Doğum tarihi gereklidir",
+        "birthdateInvalid": "Geçerli bir doğum tarihi girin (YYYY-AA-GG)",
+        "birthdateAge": "En az 13 yaşında olmalısınız"
+      },
+
+      "iToastTitles":{
+        "error":"Hata",
+        "success":"Başarılı",
+        "warning":"Uyarı",
+        "info":"Bilgi"
+      }
+}

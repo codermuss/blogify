@@ -43,16 +43,19 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        elevation: 0,
-        backgroundColor: backgroundColor,
-        foregroundColor: textColor,
-        textStyle: AppTextStyles.bodyText2,
-        padding: Paddings.p16h + Paddings.p16a,
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          backgroundColor: backgroundColor,
+          foregroundColor: textColor,
+          textStyle: AppTextStyles.bodyText2,
+          padding: Paddings.p16h + Paddings.p16a,
+        ),
+        onPressed: onPressed,
+        child: Text(label),
       ),
-      onPressed: onPressed,
-      child: Text(label),
     );
   }
 }
