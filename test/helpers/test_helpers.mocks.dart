@@ -7,6 +7,9 @@ import 'dart:async' as _i6;
 import 'dart:ui' as _i7;
 
 import 'package:blogify/models/base/base_response.dart' as _i3;
+import 'package:blogify/models/request/auth/sign_in_request.dart' as _i17;
+import 'package:blogify/models/request/auth/sign_up_request.dart' as _i15;
+import 'package:blogify/models/response/auth/sign_in_response.dart' as _i16;
 import 'package:blogify/models/response/auth/sign_up_response.dart' as _i14;
 import 'package:blogify/models/response/onboarding/onboarding.dart' as _i12;
 import 'package:blogify/network/clients/dio/dio_http_client.dart' as _i11;
@@ -834,7 +837,7 @@ class MockAuthApiService extends _i1.Mock implements _i13.AuthApiService {
       ) as _i11.DioHttpClient);
 
   @override
-  _i6.Future<_i3.BaseResponse<_i14.SignUpResponse>> signUp(dynamic request) => (super.noSuchMethod(
+  _i6.Future<_i3.BaseResponse<_i14.SignUpResponse>> signUp(_i15.SignUpRequest? request) => (super.noSuchMethod(
         Invocation.method(
           #signUp,
           [request],
@@ -854,4 +857,26 @@ class MockAuthApiService extends _i1.Mock implements _i13.AuthApiService {
           ),
         )),
       ) as _i6.Future<_i3.BaseResponse<_i14.SignUpResponse>>);
+
+  @override
+  _i6.Future<_i3.BaseResponse<_i16.SignInResponse>> signIn(_i17.SignInRequest? request) => (super.noSuchMethod(
+        Invocation.method(
+          #signIn,
+          [request],
+        ),
+        returnValue: _i6.Future<_i3.BaseResponse<_i16.SignInResponse>>.value(_FakeBaseResponse_1<_i16.SignInResponse>(
+          this,
+          Invocation.method(
+            #signIn,
+            [request],
+          ),
+        )),
+        returnValueForMissingStub: _i6.Future<_i3.BaseResponse<_i16.SignInResponse>>.value(_FakeBaseResponse_1<_i16.SignInResponse>(
+          this,
+          Invocation.method(
+            #signIn,
+            [request],
+          ),
+        )),
+      ) as _i6.Future<_i3.BaseResponse<_i16.SignInResponse>>);
 }
