@@ -4,4 +4,5 @@ abstract final class AppRequestKeys {
   static const email = 'email';
   static const password = 'password';
   static const birthdate = 'birth_date';
+  static const avatar = 'avatar';
 }
