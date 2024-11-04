@@ -42,7 +42,7 @@ class SignUpViewModel extends BaseViewModel with SignUpFormHelper, ViewModelSupp
     final SignUpRequest? request = createRequestModel<SignUpRequest>(validateForm);
     if (request != null) {
       SignUpResponse? response = await runLoadingFuture(() async => await _authApiService.signUp(request));
-      if (response != null) navigationService.navigateToSignInView();
+      if (response != null) navigationService.clearStackAndShow(Routes.signInView);
     }
   }
 }
