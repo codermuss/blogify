@@ -9,6 +9,7 @@ import 'package:blogify/ui/views/sign_up/sign_up_view.dart';
 import 'package:blogify/ui/views/onboarding/onboarding_view.dart';
 import 'package:blogify/services/api/onboarding_api_service.dart';
 import 'package:blogify/services/api/auth_api_service.dart';
+import 'package:blogify/ui/views/sign_in/sign_in_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -17,6 +18,7 @@ import 'package:blogify/services/api/auth_api_service.dart';
     MaterialRoute(page: StartupView),
     MaterialRoute(page: SignUpView),
     MaterialRoute(page: OnboardingView),
+    MaterialRoute(page: SignInView),
 // @stacked-route
   ],
   dependencies: [
