@@ -1,4 +1,4 @@
-import 'package:blogify/models/request/sign_up_request.dart';
+import 'package:blogify/models/request/auth/sign_up_request.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 

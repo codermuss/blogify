@@ -1,5 +1,5 @@
 import 'package:blogify/mixin/api_service_supporter.dart';
-import 'package:blogify/models/request/sign_up_request.dart';
+import 'package:blogify/models/request/auth/sign_up_request.dart';
 import 'package:blogify/models/response/auth/sign_up_response.dart';
 import 'package:blogify/utilities/constants/app_api_paths.dart';
 
