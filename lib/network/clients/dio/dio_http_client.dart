@@ -8,11 +8,6 @@ import '../../../models/base/base_response.dart';
 import '../../mixin/dio_http_client_mixin.dart';
 
 final class DioHttpClient extends INetworkService with DioHttpClientMixin {
-  /// MARK: [env]
-  /// MARK: [NetworkParser] gelen response'u ayıklamak için
-  /// Mark: [networkService]
-  /// Temel olarak base yapısını baz alarak işlemleri gerçekleştirecek olan yapıdadır
-
   DioHttpClient({
     required String baseUrl,
     Dio? dio,
@@ -28,9 +23,6 @@ final class DioHttpClient extends INetworkService with DioHttpClientMixin {
       enableLogging: enableLogging,
     );
   }
-
-  /// Mark: Fetch
-  /// [GET] request
 
   @override
   Future<BaseResponse<K>> fetch<T, K>({
@@ -50,9 +42,6 @@ final class DioHttpClient extends INetworkService with DioHttpClientMixin {
       return BaseResponse.error(ResponseMessageModel(text: '$error'));
     }
   }
-
-  /// Mark: Send
-  /// [POST] request
 
   @override
   Future<BaseResponse<K>> send<T, K>({
@@ -83,9 +72,6 @@ final class DioHttpClient extends INetworkService with DioHttpClientMixin {
     }
   }
 
-  /// Mark: Update
-  /// [PUT] request
-
   @override
   Future<BaseResponse<K>> update<T, K>({
     required String path,
@@ -113,8 +99,6 @@ final class DioHttpClient extends INetworkService with DioHttpClientMixin {
     }
   }
 
-  /// Mark: Delete
-  /// [DELETE] request
   @override
   Future<BaseResponse<K>> delete<T, K>({
     required String path,
@@ -136,39 +120,4 @@ final class DioHttpClient extends INetworkService with DioHttpClientMixin {
       return BaseResponse.error(ResponseMessageModel(text: '$error'));
     }
   }
-
-  @override
-  Future<BaseResponse<K>> uploadImage<T, K>(
-      {required String path, required void Function(Map<String, dynamic> json) fromJson, required String? image, required Map<String, dynamic> data}) {
-    // TODO: implement uploadImage
-    throw UnimplementedError();
-  }
-
-  // Future<BaseResponse<K>> uploadImage<T, K>({
-  //   required String path,
-  //   required void Function(Map<String, dynamic> json) fromJson,
-  //   required String? image,
-  //   required Map<String, dynamic> data,
-  // }) async {
-  //   try {
-  //     FormData formData = FormData();
-
-  //     data.forEach((key, value) {
-  //       formData.fields.add(MapEntry(key, value.toString()));
-  //     });
-  //     if (image.isNotNullAndEmpty) {
-  //       formData.files.add(MapEntry(
-  //         RequestKeys.avatar,
-  //         MultipartFile.fromFileSync(image!),
-  //       ));
-  //     }
-
-  //     final response = await dio.put<Map<String, dynamic>>(path, data: formData);
-  //     return networkParser.parse<T, K>(response: response, fromJson: fromJson);
-  //   } on DioException catch (error) {
-  //     return BaseResponse.error(ResponseMessageModel(text: AppHttpException.fromDioError(error).message));
-  //   } catch (error) {
-  //     n const BaseResponse.error(ResponseMessageModel(text: '$error'));
-  //   }
-  // }
 }

@@ -28,5 +28,12 @@
         "birthdateRequired": "Doğum tarihi gereklidir",
         "birthdateInvalid": "Geçerli bir doğum tarihi girin (YYYY-AA-GG)",
         "birthdateAge": "En az 13 yaşında olmalısınız"
+      },
+
+      "iToastTitles":{
+        "error":"Hata",
+        "success":"Başarılı",
+        "warning":"Uyarı",
+        "info":"Bilgi"
       }
 }

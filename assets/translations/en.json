@@ -1,7 +1,8 @@
 {
     "singUp":"Sign Up",
     "singIn":"Sign In",
-    "name":"Name",
+    "username":"Username",
+    "fullName":"Name & Surname",
     "email":"Email",
     "password":"Password",
     "forgotYourPassword":"Forgot your password?",
@@ -27,7 +28,12 @@
         "birthdateRequired": "Birthdate is required",
         "birthdateInvalid": "Enter a valid birthdate (YYYY-MM-DD)",
         "birthdateAge": "You must be at least 13 years old"
+    },
+       "iToastTitles":{ 
+        "success": "Success",
+        "error": "Error",
+        "warning": "Warning",
+        "info": "Info"
     }
-       
 
 }

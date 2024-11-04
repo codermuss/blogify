@@ -1,6 +1,7 @@
 import 'package:blogify/app/app.initialize.dart';
 import 'package:blogify/app/app.router.dart';
 import 'package:blogify/main_viewmodel.dart';
+import 'package:blogify/utilities/constants/app_nums.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,11 +12,10 @@ Future<void> main() async => await AppInitialize.instance.run();
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375, 812),
+      designSize: const Size(AppNums.appWidth, AppNums.appHeight),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {

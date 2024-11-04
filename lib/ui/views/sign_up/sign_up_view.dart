@@ -1,3 +1,4 @@
+import 'package:blogify/extensions/string_extensions.dart';
 import 'package:blogify/extensions/widget_extensions.dart';
 import 'package:blogify/localization/locale_keys.g.dart';
 import 'package:blogify/ui/components/buttons/app_button.dart';
@@ -59,15 +60,15 @@ class SignUpView extends StackedView<SignUpViewModel> {
                 controller: viewModel.passwordController,
                 hintText: LocaleKeys.password,
                 validator: Validators.validatePassword,
-                obscureText: true,
-                suffix: TextButton(onPressed: () {}, child: LocaleText(LocaleKeys.show)),
+                obscureText: viewModel.obscurePassword,
+                suffix: TextButton(onPressed: () => viewModel.setObscurePassword(!viewModel.obscurePassword), child: LocaleText(LocaleKeys.show)),
               ),
               AppTextFormField(
                 controller: viewModel.confirmPasswordController,
                 hintText: LocaleKeys.password,
                 validator: (val) => Validators.validateConfirmPassword(val, viewModel.passwordController.text),
-                obscureText: true,
-                suffix: TextButton(onPressed: () {}, child: LocaleText(LocaleKeys.show)),
+                obscureText: viewModel.obscureConfirmPassword,
+                suffix: TextButton(onPressed: () => viewModel.setObscureConfirmPassword(!viewModel.obscureConfirmPassword), child: LocaleText(LocaleKeys.show)),
               ),
               AppTextFormField(
                 controller: viewModel.birthdateController,
@@ -75,7 +76,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
                 validator: Validators.validateBirthdate,
               ),
               Spaces.verticalSpaceMedium,
-              AppButton.primary(context: context, label: 'Sign Up', onPressed: viewModel.signUp),
+              AppButton.primary(context: context, label: LocaleKeys.singUp.locale, onPressed: viewModel.signUp),
               TextButton(onPressed: () {}, child: LocaleText(LocaleKeys.forgotYourPassword)),
             ],
           ).p16h,

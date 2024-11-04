@@ -18,6 +18,11 @@ final class SignUpRequest extends BaseRequest {
     required this.birthdate,
   });
   @override
-  Map<String, dynamic> toJson() =>
-      {AppRequestKeys.username: username, AppRequestKeys.fullName: fullName, AppRequestKeys.email: email, AppRequestKeys.password: password, AppRequestKeys.birthdate: birthdate};
+  Map<String, dynamic> toJson() => {
+        AppRequestKeys.username: username,
+        AppRequestKeys.fullName: fullName,
+        AppRequestKeys.email: email,
+        AppRequestKeys.password: password,
+        AppRequestKeys.birthdate: birthdate,
+      };
 }

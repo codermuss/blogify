@@ -30,5 +30,10 @@ abstract class  LocaleKeys {
   static const validators_birthdateInvalid = 'validators.birthdateInvalid';
   static const validators_birthdateAge = 'validators.birthdateAge';
   static const validators = 'validators';
+  static const iToastTitles_error = 'iToastTitles.error';
+  static const iToastTitles_success = 'iToastTitles.success';
+  static const iToastTitles_warning = 'iToastTitles.warning';
+  static const iToastTitles_info = 'iToastTitles.info';
+  static const iToastTitles = 'iToastTitles';
 
 }
