@@ -10,7 +10,6 @@ class StartupViewModel extends BaseViewModel with ViewModelSupporter {
   final _navigationService = locator<NavigationService>();
 
   Future runStartupLogic() async {
-    print(storageService.getData(AppStrings.accessToken));
     if (await storageService.getData(AppStrings.accessToken) != null) {
       _navigationService.replaceWithHomeView();
       return;

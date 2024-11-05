@@ -29,7 +29,6 @@ class SignInViewModel extends BaseViewModel with ViewModelSupporter, SignInFormH
       SignInResponse? response = await runLoadingFuture<SignInResponse>(() => _authApiService.signIn(signInRequest));
       if (response != null) {
         await storageService.saveData(AppStrings.accessToken, response.accessToken);
-        print(storageService.getData(AppStrings.accessToken));
         navigationService.clearStackAndShow(Routes.homeView);
       }
     }

@@ -26,7 +26,9 @@ class HiveStorageService implements IStorageService {
       final encryptedData = _encryptionService.encryptData(jsonString);
       final encryptedKey = _encryptionService.encryptData(key);
       await box.put(encryptedKey, encryptedData);
-    } catch (_) {}
+    } catch (e) {
+      if (kDebugMode) debugPrint('Error getting data: $e');
+    }
   }
 
   @override
@@ -53,7 +55,9 @@ class HiveStorageService implements IStorageService {
     try {
       final box = Hive.box(_boxName);
       await box.delete(key);
-    } catch (_) {}
+    } catch (e) {
+      if (kDebugMode) debugPrint('Error getting data: $e');
+    }
   }
 
   @override
@@ -61,6 +65,8 @@ class HiveStorageService implements IStorageService {
     try {
       final box = Hive.box(_boxName);
       await box.clear();
-    } catch (_) {}
+    } catch (e) {
+      if (kDebugMode) debugPrint('Error getting data: $e');
+    }
   }
 }
