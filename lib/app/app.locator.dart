@@ -13,6 +13,8 @@ import 'package:stacked_shared/stacked_shared.dart';
 
 import '../services/api/auth_api_service.dart';
 import '../services/api/onboarding_api_service.dart';
+import '../services/app/encryption_service.dart';
+import '../services/app/hive_storage_service.dart';
 import '../services/app/theme_service.dart';
 
 final locator = StackedLocator.instance;
@@ -32,4 +34,6 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => ThemeService());
   locator.registerLazySingleton(() => OnboardingApiService());
   locator.registerLazySingleton(() => AuthApiService());
+  locator.registerLazySingleton(() => HiveStorageService());
+  locator.registerLazySingleton(() => EncryptionService());
 }

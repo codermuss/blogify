@@ -16,6 +16,10 @@ abstract class  LocaleKeys {
   static const skip = 'skip';
   static const getStarted = 'getStarted';
   static const birthdate = 'birthdate';
+  static const home = 'home';
+  static const settings = 'settings';
+  static const logout = 'logout';
+  static const profile = 'profile';
   static const validators_usernameRequired = 'validators.usernameRequired';
   static const validators_usernameLength = 'validators.usernameLength';
   static const validators_nameRequired = 'validators.nameRequired';

@@ -68,6 +68,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
           Expanded(
             flex: 1,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: actions!,
             ),
           )

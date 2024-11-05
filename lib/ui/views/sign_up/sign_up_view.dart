@@ -1,3 +1,4 @@
+import 'package:blogify/app/app.router.dart';
 import 'package:blogify/extensions/string_extensions.dart';
 import 'package:blogify/extensions/widget_extensions.dart';
 import 'package:blogify/localization/locale_keys.g.dart';
@@ -27,7 +28,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
         title: LocaleKeys.singUp,
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: viewModel.navigationService.navigateToSignInView,
             child: LocaleText(
               LocaleKeys.singIn,
             ),

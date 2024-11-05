@@ -9,6 +9,9 @@ import 'package:blogify/ui/views/sign_up/sign_up_view.dart';
 import 'package:blogify/ui/views/onboarding/onboarding_view.dart';
 import 'package:blogify/services/api/onboarding_api_service.dart';
 import 'package:blogify/services/api/auth_api_service.dart';
+import 'package:blogify/ui/views/sign_in/sign_in_view.dart';
+import 'package:blogify/services/app/hive_storage_service.dart';
+import 'package:blogify/services/app/encryption_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -17,6 +20,7 @@ import 'package:blogify/services/api/auth_api_service.dart';
     MaterialRoute(page: StartupView),
     MaterialRoute(page: SignUpView),
     MaterialRoute(page: OnboardingView),
+    MaterialRoute(page: SignInView),
 // @stacked-route
   ],
   dependencies: [
@@ -26,6 +30,8 @@ import 'package:blogify/services/api/auth_api_service.dart';
     LazySingleton(classType: ThemeService),
     LazySingleton(classType: OnboardingApiService),
     LazySingleton(classType: AuthApiService),
+    LazySingleton(classType: HiveStorageService),
+    LazySingleton(classType: EncryptionService),
 // @stacked-service
   ],
   bottomsheets: [

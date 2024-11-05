@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:blogify/app/app.locator.dart';
 import 'package:blogify/extensions/string_extensions.dart';
+import 'package:blogify/interfaces/i_storage_service.dart';
+import 'package:blogify/services/app/hive_storage_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:i_toast/i_toast.dart';
@@ -18,6 +20,7 @@ mixin ViewModelSupporter on BaseViewModel {
   final DialogService dialogService = locator<DialogService>();
   final BottomSheetService bottomSheetService = locator<BottomSheetService>();
   final NavigationService navigationService = locator<NavigationService>();
+  final IStorageService storageService = locator<HiveStorageService>();
 
   /// MARK: - [Properties]
   final Map<String, ViewState> _states = {};
