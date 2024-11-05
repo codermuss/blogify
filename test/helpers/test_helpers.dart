@@ -6,6 +6,8 @@ import 'package:mockito/mockito.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import 'package:blogify/services/api/auth_api_service.dart';
+import 'package:blogify/services/app/hive_storage_service.dart';
+import 'package:blogify/services/app/encryption_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -17,6 +19,8 @@ import 'test_helpers.mocks.dart';
   MockSpec<ThemeService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<OnboardingApiService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AuthApiService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<HiveStorageService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<EncryptionService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -26,6 +30,8 @@ void registerServices() {
   getAndRegisterThemeService();
   getAndRegisterOnboardingApiService();
   getAndRegisterAuthApiService();
+  getAndRegisterHiveStorageService();
+  getAndRegisterEncryptionService();
 // @stacked-mock-register
 }
 
@@ -96,6 +102,20 @@ MockAuthApiService getAndRegisterAuthApiService() {
   _removeRegistrationIfExists<AuthApiService>();
   final service = MockAuthApiService();
   locator.registerSingleton<AuthApiService>(service);
+  return service;
+}
+
+MockHiveStorageService getAndRegisterHiveStorageService() {
+  _removeRegistrationIfExists<HiveStorageService>();
+  final service = MockHiveStorageService();
+  locator.registerSingleton<HiveStorageService>(service);
+  return service;
+}
+
+MockEncryptionService getAndRegisterEncryptionService() {
+  _removeRegistrationIfExists<EncryptionService>();
+  final service = MockEncryptionService();
+  locator.registerSingleton<EncryptionService>(service);
   return service;
 }
 // @stacked-mock-create

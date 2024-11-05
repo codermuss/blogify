@@ -12,6 +12,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../services/app/hive_storage_service.dart';
+
 final class AppInitialize {
   const AppInitialize._();
   static const AppInitialize instance = AppInitialize._();
@@ -33,6 +35,7 @@ final class AppInitialize {
     setupCustomLocator();
     setupDialogUi();
     setupBottomSheetUi();
+    await locator<HiveStorageService>().init();
     runApp(AppLocalization(child: const MainApp()));
   }
 

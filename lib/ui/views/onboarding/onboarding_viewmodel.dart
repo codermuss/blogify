@@ -2,6 +2,7 @@ import 'package:blogify/app/app.locator.dart';
 import 'package:blogify/mixin/viewmodel_supporter.dart';
 import 'package:blogify/models/response/onboarding/onboarding.dart';
 import 'package:blogify/services/api/onboarding_api_service.dart';
+import 'package:blogify/utilities/constants/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -57,6 +58,7 @@ class OnboardingViewModel extends BaseViewModel with ViewModelSupporter {
   }
 
   void onNext() {
+    storageService.getData(AppStrings.accessToken);
     if (currentIndex == (getModel<List<Onboarding>>(onboardings)?.length ?? 1) - 1) {
       navigationService.clearStackAndShow(Routes.signUpView);
     } else {
