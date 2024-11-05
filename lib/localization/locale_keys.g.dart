@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const singUp = 'singUp';
   static const singIn = 'singIn';
   static const username = 'username';
@@ -16,6 +16,10 @@ abstract class LocaleKeys {
   static const skip = 'skip';
   static const getStarted = 'getStarted';
   static const birthdate = 'birthdate';
+  static const home = 'home';
+  static const settings = 'settings';
+  static const logout = 'logout';
+  static const profile = 'profile';
   static const validators_usernameRequired = 'validators.usernameRequired';
   static const validators_usernameLength = 'validators.usernameLength';
   static const validators_nameRequired = 'validators.nameRequired';
@@ -35,4 +39,5 @@ abstract class LocaleKeys {
   static const iToastTitles_warning = 'iToastTitles.warning';
   static const iToastTitles_info = 'iToastTitles.info';
   static const iToastTitles = 'iToastTitles';
+
 }

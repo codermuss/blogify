@@ -14,6 +14,10 @@
     "skip":"Geç",
     "getStarted":"Hemen Başla!",
     "birthdate":"Doğum günü",
+    "home":"Anasayfa",
+    "settings":"Ayarlar",
+    "logout":"Çıkış Yap",
+    "profile":"Profil",
     "validators": {
       "usernameRequired":"Kullanıcı Adı gereklidir",
       "usernameLength":"Kullanıcı Adı en az 2 karakter olmalıdır",
