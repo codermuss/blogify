@@ -1,13 +1,13 @@
 import 'package:blogify/app/app.locator.dart';
+import 'package:blogify/services/api/auth_api_service.dart';
 import 'package:blogify/services/api/onboarding_api_service.dart';
+import 'package:blogify/services/app/encryption_service.dart';
+import 'package:blogify/services/app/hive_storage_service.dart';
 import 'package:blogify/services/app/theme_service.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import 'package:blogify/services/api/auth_api_service.dart';
-import 'package:blogify/services/app/hive_storage_service.dart';
-import 'package:blogify/services/app/encryption_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';

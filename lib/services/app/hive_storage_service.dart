@@ -23,8 +23,8 @@ class HiveStorageService implements IStorageService {
     try {
       final box = Hive.box(_boxName);
       final jsonString = json.encode(value);
-      final encryptedData = _encryptionService.encryptData(jsonString);
-      final encryptedKey = _encryptionService.encryptData(key);
+      final encryptedData = _encryptionService.encrypt(jsonString);
+      final encryptedKey = _encryptionService.encrypt(key);
       await box.put(encryptedKey, encryptedData);
     } catch (e) {
       if (kDebugMode) debugPrint('Error getting data: $e');
@@ -35,12 +35,12 @@ class HiveStorageService implements IStorageService {
   T? getData<T>(String key) {
     try {
       final box = Hive.box(_boxName);
-      final String encryptedKey = _encryptionService.encryptData(key);
+      final String encryptedKey = _encryptionService.encrypt(key);
       final encryptedData = box.get(encryptedKey) as String?;
 
       // * Note [codermuss]:  Decrypt the data if it exists
       if (encryptedData != null) {
-        final String decryptedData = _encryptionService.decryptData(encryptedData);
+        final String decryptedData = _encryptionService.decrypt(encryptedData);
         return json.decode(decryptedData) as T?;
       }
       return null;

@@ -1,23 +1,19 @@
-import 'package:encrypt/encrypt.dart' as encrypt;
+import 'package:encrypt/encrypt.dart';
 
 class EncryptionService {
-  final encrypt.Key key = encrypt.Key.fromLength(32);
-  final encrypt.IV iv = encrypt.IV.fromLength(16);
-  late final encrypt.Encrypter encrypter;
+  final Key _key = Key.fromLength(32);
+  final IV _iv = IV.fromLength(16);
 
-  EncryptionService() {
-    encrypter = encrypt.Encrypter(encrypt.AES(key));
+  String encrypt(String? data) {
+    final Encrypter encrypter = Encrypter(AES(_key));
+    final Encrypted encryptedData = encrypter.encrypt(data ?? '', iv: _iv);
+    return encryptedData.base64;
   }
 
-  /// Encrypts a plain text and returns the encrypted string.
-  String encryptData(String plainText) {
-    final encrypted = encrypter.encrypt(plainText, iv: iv);
-    return encrypted.base64;
-  }
-
-  /// Decrypts an encrypted string and returns the plain text.
-  String decryptData(String encryptedText) {
-    final decrypted = encrypter.decrypt64(encryptedText, iv: iv);
-    return decrypted;
+  // Şifreyi çözen metod
+  String decrypt(String? encryptedData) {
+    final Encrypter encrypter = Encrypter(AES(_key));
+    final String decryptedData = encrypter.decrypt64(encryptedData ?? '', iv: _iv);
+    return decryptedData;
   }
 }

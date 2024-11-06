@@ -6,15 +6,12 @@ part of 'sign_in_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SignInResponse _$SignInResponseFromJson(Map<String, dynamic> json) =>
-    SignInResponse(
+SignInResponse _$SignInResponseFromJson(Map<String, dynamic> json) => SignInResponse(
       sessionId: json['session_id'] as String,
       accessToken: json['access_token'] as String,
-      accessTokenExpiresAt:
-          DateTime.parse(json['access_token_expires_at'] as String),
+      accessTokenExpiresAt: DateTime.parse(json['access_token_expires_at'] as String),
       refreshToken: json['refresh_token'] as String,
-      refreshTokenExpiresAt:
-          DateTime.parse(json['refresh_token_expires_at'] as String),
+      refreshTokenExpiresAt: DateTime.parse(json['refresh_token_expires_at'] as String),
       user: User.fromJson(json['user'] as Map<String, dynamic>),
     );
 
