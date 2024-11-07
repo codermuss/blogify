@@ -1,47 +1,86 @@
-// import 'package:blogify/app/app.locator.dart';
-// import 'package:blogify/services/app/hive_storage_service.dart';
-// import 'package:flutter_test/flutter_test.dart';
-// import 'package:mockito/mockito.dart';
+import 'dart:convert';
 
-// import '../../helpers/test_helpers.dart';
+import 'package:blogify/app/app.locator.dart';
+import 'package:blogify/services/app/encryption_service.dart';
+import 'package:blogify/services/app/hive_storage_service.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
+import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
+import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-// void main() {
-//   group(
-//     'HiveStorageServiceTest -',
-//     () {
-//       setUp(() => registerServices());
-//       tearDown(() => locator.reset());
+import '../../helpers/test_helpers.dart';
+import '../../helpers/test_helpers.mocks.dart';
 
-//       test('should save data', () async {
-//         HiveStorageService mockHiveStorageService = getAndRegisterHiveStorageService();
-//         when(mockHiveStorageService.saveData(any,any)).thenAnswer((_) async => true);
+class FakePathProviderPlatform extends Fake with MockPlatformInterfaceMixin implements PathProviderPlatform {
+  @override
+  Future<String?> getApplicationDocumentsPath() async {
+    return 'test/services/app/hive_folder';
+  }
 
-//         final result = await mockHiveStorageService.saveData(
-//           key: 'testKey',
-//           value: 'testValue',
-//         );
+  @override
+  Future<String?> getApplicationSupportPath() async {
+    return 'test/services/app/hive_folder';
+  }
+}
 
-//         expect(result, true);
-//         verify(mockHiveStorageService.saveData(key: 'testKey', value: 'testValue')).called(1);
-//       });
+void main() {
+  group(
+    'HiveStorageServiceTest -',
+    () {
+      late HiveStorageService storageService;
+      late MockEncryptionService mockEncryptionService;
 
-//       test('should read data', () async {
-//         when(mockHiveStorageService.readData('testKey')).thenAnswer((_) async => 'testValue');
+      setUp(() async {
+        registerServices();
+        mockEncryptionService = locator<EncryptionService>() as MockEncryptionService;
+        PathProviderPlatform.instance = FakePathProviderPlatform();
+        storageService = HiveStorageService();
+        await storageService.init();
+      });
 
-//         final result = await mockHiveStorageService.readData('testKey');
+      tearDown(() {
+        locator.reset();
+      });
 
-//         expect(result, 'testValue');
-//         verify(mockHiveStorageService.readData('testKey')).called(1);
-//       });
+      test('saveData should encrypt and store the data', () async {
+        const key = 'testKey';
+        final value = {'data': 'testValue'};
+        const encryptedKey = 'encryptedKey';
+        const encryptedData = 'encryptedData';
 
-//       test('should delete data', () async {
-//         when(mockHiveStorageService.deleteData('testKey')).thenAnswer((_) async => true);
+        when(mockEncryptionService.encrypt(key)).thenReturn(encryptedKey);
+        when(mockEncryptionService.encrypt(json.encode(value))).thenReturn(encryptedData);
 
-//         final result = await mockHiveStorageService.deleteData('testKey');
+        await storageService.saveData(key, value);
+      });
 
-//         expect(result, true);
-//         verify(mockHiveStorageService.deleteData('testKey')).called(1);
-//       });
-//     },
-//   );
-// }
+      test('getData should retrieve and decrypt the data', () {
+        const key = 'testKey';
+        const encryptedKey = 'encryptedKey';
+        const encryptedData = 'encryptedData';
+        final value = {'data': 'testValue'};
+        final jsonData = json.encode(value);
+
+        when(mockEncryptionService.encrypt(key)).thenReturn(encryptedKey);
+        when(mockEncryptionService.decrypt(encryptedData)).thenReturn(jsonData);
+
+        final result = storageService.getData<Map<String, dynamic>>(key);
+
+        expect(result, equals(value));
+      });
+
+      test('deleteData should remove the entry with the encrypted key', () async {
+        const key = 'testKey';
+        const encryptedKey = 'encryptedKey';
+
+        when(mockEncryptionService.encrypt(key)).thenReturn(encryptedKey);
+
+        await storageService.deleteData(key);
+      });
+
+      test('clearAllData should clear the box', () async {
+        await storageService.clearAllData();
+      });
+    },
+  );
+}

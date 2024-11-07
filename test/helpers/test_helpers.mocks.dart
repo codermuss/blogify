@@ -888,10 +888,11 @@ class MockAuthApiService extends _i1.Mock implements _i13.AuthApiService {
 /// See the documentation for Mockito's code generation for more information.
 class MockHiveStorageService extends _i1.Mock implements _i18.HiveStorageService {
   @override
-  _i6.Future<void> init() => (super.noSuchMethod(
+  _i6.Future<void> init({String? path}) => (super.noSuchMethod(
         Invocation.method(
           #init,
           [],
+          {#path: path},
         ),
         returnValue: _i6.Future<void>.value(),
         returnValueForMissingStub: _i6.Future<void>.value(),

@@ -13,8 +13,8 @@ class HiveStorageService implements IStorageService {
   final EncryptionService _encryptionService = locator<EncryptionService>();
 
   @override
-  Future<void> init() async {
-    Hive.init((await getApplicationDocumentsDirectory()).path);
+  Future<void> init({String? path}) async {
+    Hive.init(path ?? (await getApplicationDocumentsDirectory()).path);
     await Hive.openBox(_boxName);
   }
 
