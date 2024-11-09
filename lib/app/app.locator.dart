@@ -16,6 +16,7 @@ import '../services/api/onboarding_api_service.dart';
 import '../services/app/encryption_service.dart';
 import '../services/app/hive_storage_service.dart';
 import '../services/app/theme_service.dart';
+import '../services/app/view_model_helper_service.dart';
 
 final locator = StackedLocator.instance;
 
@@ -35,4 +36,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => AuthApiService());
   locator.registerLazySingleton(() => HiveStorageService());
   locator.registerLazySingleton(() => EncryptionService());
+  locator.registerLazySingleton(() => ViewModelHelperService());
 }

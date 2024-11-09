@@ -8,6 +8,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import 'package:blogify/services/app/view_model_helper_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -21,6 +22,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<AuthApiService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<HiveStorageService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<EncryptionService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<ViewModelHelperService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -32,6 +34,7 @@ void registerServices() {
   getAndRegisterAuthApiService();
   getAndRegisterHiveStorageService();
   getAndRegisterEncryptionService();
+  getAndRegisterViewModelHelperService();
 // @stacked-mock-register
 }
 
@@ -116,6 +119,13 @@ MockEncryptionService getAndRegisterEncryptionService() {
   _removeRegistrationIfExists<EncryptionService>();
   final service = MockEncryptionService();
   locator.registerSingleton<EncryptionService>(service);
+  return service;
+}
+
+MockViewModelHelperService getAndRegisterViewModelHelperService() {
+  _removeRegistrationIfExists<ViewModelHelperService>();
+  final service = MockViewModelHelperService();
+  locator.registerSingleton<ViewModelHelperService>(service);
   return service;
 }
 // @stacked-mock-create

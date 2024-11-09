@@ -12,6 +12,7 @@ import 'package:blogify/services/api/auth_api_service.dart';
 import 'package:blogify/ui/views/sign_in/sign_in_view.dart';
 import 'package:blogify/services/app/hive_storage_service.dart';
 import 'package:blogify/services/app/encryption_service.dart';
+import 'package:blogify/services/app/view_model_helper_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -32,6 +33,7 @@ import 'package:blogify/services/app/encryption_service.dart';
     LazySingleton(classType: AuthApiService),
     LazySingleton(classType: HiveStorageService),
     LazySingleton(classType: EncryptionService),
+    LazySingleton(classType: ViewModelHelperService),
 // @stacked-service
   ],
   bottomsheets: [
