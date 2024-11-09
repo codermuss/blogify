@@ -1,8 +1,9 @@
 import 'package:blogify/models/request/auth/sign_up_request.dart';
+import 'package:blogify/ui/views/sign_up/sign_up_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-mixin SignUpFormHelper on BaseViewModel {
+mixin SignUpFormHelper on StackedView<SignUpViewModel> {
   final formKey = GlobalKey<FormState>();
 
   final usernameController = TextEditingController();

@@ -16,6 +16,11 @@ class SignUpResponse {
   });
 
   factory SignUpResponse.fromJson(Map<String, dynamic> json) => _$SignUpResponseFromJson(json);
+
+  factory SignUpResponse.empty() => SignUpResponse(
+        user: User.empty(),
+        profile: Profile.empty(),
+      );
 }
 
 @JsonSerializable()

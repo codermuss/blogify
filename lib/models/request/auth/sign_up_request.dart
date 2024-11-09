@@ -25,4 +25,13 @@ final class SignUpRequest extends BaseRequest {
         AppRequestKeys.password: password,
         AppRequestKeys.birthdate: birthdate,
       };
+
+  factory SignUpRequest.empty() => SignUpRequest(
+        username: '',
+        fullName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        birthdate: '',
+      );
 }

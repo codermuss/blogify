@@ -6,9 +6,8 @@ import 'package:blogify/services/api/auth_api_service.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../app/app.locator.dart';
-import 'sign_up_form_helper.dart';
 
-class SignUpViewModel extends BaseViewModel with SignUpFormHelper, ViewModelSupporter {
+class SignUpViewModel extends BaseViewModel with ViewModelSupporter {
   /// MARK: - [Dependencies]
   final AuthApiService _authApiService = locator<AuthApiService>();
 
@@ -38,8 +37,7 @@ class SignUpViewModel extends BaseViewModel with SignUpFormHelper, ViewModelSupp
 
   /// MARK: - [Methods]
 
-  Future<void> signUp() async {
-    final SignUpRequest? request = createRequestModel<SignUpRequest>(validateForm);
+  Future<void> signUp({required SignUpRequest? request}) async {
     if (request != null) {
       SignUpResponse? response = await runLoadingFuture(() async => await _authApiService.signUp(request));
       if (response != null) navigationService.clearStackAndShow(Routes.signInView);
