@@ -1,7 +1,9 @@
 import 'package:blogify/app/app.locator.dart';
 import 'package:blogify/models/base/base_response.dart';
 import 'package:blogify/models/request/auth/sign_in_request.dart';
+import 'package:blogify/models/request/auth/sign_up_request.dart';
 import 'package:blogify/models/response/auth/sign_in_response.dart';
+import 'package:blogify/models/response/auth/sign_up_response.dart';
 import 'package:blogify/services/api/auth_api_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -48,5 +50,42 @@ void main() {
         expect(response, errorResponse);
       },
     );
+
+    test('sign up success', () async {
+      final authApiService = getAndRegisterAuthApiService();
+      final SignUpRequest signUpRequest = SignUpRequest(
+        username: 'test',
+        password: 'password',
+        fullName: 'test',
+        email: 'test@test.com',
+        confirmPassword: 'password',
+        birthdate: '1222-22-22',
+      );
+      when(authApiService.signUp(signUpRequest)).thenAnswer((_) async => BaseResponse.success(
+            SignUpResponse(
+              user: User.empty(),
+              profile: Profile.empty(),
+            ),
+            null,
+          ));
+      await authApiService.signUp(signUpRequest);
+      verify(authApiService.signUp(signUpRequest)).called(1);
+    });
+
+    test('sign up failure', () async {
+      final authApiService = getAndRegisterAuthApiService();
+      final SignUpRequest signUpRequest = SignUpRequest(
+        username: 'test',
+        password: 'password',
+        fullName: 'test',
+        email: 'test@test.com',
+        confirmPassword: 'password',
+        birthdate: '1222-22-22',
+      );
+      final errorResponse = BaseResponse<SignUpResponse>.error(null);
+      when(authApiService.signUp(signUpRequest)).thenAnswer((_) async => errorResponse);
+      final response = await authApiService.signUp(signUpRequest);
+      expect(response, errorResponse);
+    });
   });
 }
