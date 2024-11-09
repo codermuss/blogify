@@ -2,6 +2,7 @@ import 'package:blogify/app/app.router.dart';
 import 'package:blogify/extensions/string_extensions.dart';
 import 'package:blogify/extensions/widget_extensions.dart';
 import 'package:blogify/localization/locale_keys.g.dart';
+import 'package:blogify/models/request/auth/sign_up_request.dart';
 import 'package:blogify/ui/components/buttons/app_button.dart';
 import 'package:blogify/ui/components/inputs/app_text_field.dart';
 import 'package:blogify/ui/styles/spaces.dart';
@@ -78,7 +79,13 @@ class SignUpView extends StackedView<SignUpViewModel> with SignUpFormHelper {
                 validator: Validators.validateBirthdate,
               ),
               Spaces.verticalSpaceMedium,
-              AppButton.primary(context: context, label: LocaleKeys.singUp.locale, onPressed: () => viewModel.signUp(request: validateForm())),
+              AppButton.primary(
+                  context: context,
+                  label: LocaleKeys.singUp.locale,
+                  onPressed: () {
+                    SignUpRequest? request = validateForm();
+                    if (request != null) viewModel.signUp(request: request);
+                  }),
               TextButton(onPressed: () {}, child: LocaleText(LocaleKeys.forgotYourPassword)),
             ],
           ).p16h,

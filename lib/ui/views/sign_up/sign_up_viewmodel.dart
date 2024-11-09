@@ -37,10 +37,8 @@ class SignUpViewModel extends BaseViewModel with ViewModelSupporter {
 
   /// MARK: - [Methods]
 
-  Future<void> signUp({required SignUpRequest? request}) async {
-    if (request != null) {
-      SignUpResponse? response = await runLoadingFuture(() async => await _authApiService.signUp(request));
-      if (response != null) navigationService.clearStackAndShow(Routes.signInView);
-    }
+  Future<void> signUp({required SignUpRequest request}) async {
+    SignUpResponse? response = await runLoadingFuture(() async => await _authApiService.signUp(request: request));
+    if (response != null) navigationService.clearStackAndShow(Routes.signInView);
   }
 }

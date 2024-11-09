@@ -21,7 +21,7 @@ void main() {
         username: 'test',
         password: 'password',
       );
-      when(authApiService.signIn(signInRequest)).thenAnswer((_) async => BaseResponse.success(
+      when(authApiService.signIn(request: signInRequest)).thenAnswer((_) async => BaseResponse.success(
             SignInResponse(
               sessionId: 'sessionId',
               accessToken: 'accessToken',
@@ -32,8 +32,8 @@ void main() {
             ),
             null,
           ));
-      await authApiService.signIn(signInRequest);
-      verify(authApiService.signIn(signInRequest)).called(1);
+      await authApiService.signIn(request: signInRequest);
+      verify(authApiService.signIn(request: signInRequest)).called(1);
     });
 
     test(
@@ -45,8 +45,8 @@ void main() {
           password: 'password',
         );
         final errorResponse = BaseResponse<SignInResponse>.error(null);
-        when(authApiService.signIn(signInRequest)).thenAnswer((_) async => errorResponse);
-        final response = await authApiService.signIn(signInRequest);
+        when(authApiService.signIn(request: signInRequest)).thenAnswer((_) async => errorResponse);
+        final response = await authApiService.signIn(request: signInRequest);
         expect(response, errorResponse);
       },
     );
@@ -61,15 +61,15 @@ void main() {
         confirmPassword: 'password',
         birthdate: '1222-22-22',
       );
-      when(authApiService.signUp(signUpRequest)).thenAnswer((_) async => BaseResponse.success(
+      when(authApiService.signUp(request: signUpRequest)).thenAnswer((_) async => BaseResponse.success(
             SignUpResponse(
               user: User.empty(),
               profile: Profile.empty(),
             ),
             null,
           ));
-      await authApiService.signUp(signUpRequest);
-      verify(authApiService.signUp(signUpRequest)).called(1);
+      await authApiService.signUp(request: signUpRequest);
+      verify(authApiService.signUp(request: signUpRequest)).called(1);
     });
 
     test('sign up failure', () async {
@@ -83,8 +83,8 @@ void main() {
         birthdate: '1222-22-22',
       );
       final errorResponse = BaseResponse<SignUpResponse>.error(null);
-      when(authApiService.signUp(signUpRequest)).thenAnswer((_) async => errorResponse);
-      final response = await authApiService.signUp(signUpRequest);
+      when(authApiService.signUp(request: signUpRequest)).thenAnswer((_) async => errorResponse);
+      final response = await authApiService.signUp(request: signUpRequest);
       expect(response, errorResponse);
     });
   });

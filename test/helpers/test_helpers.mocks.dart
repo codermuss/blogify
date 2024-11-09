@@ -893,45 +893,51 @@ class MockAuthApiService extends _i1.Mock implements _i15.AuthApiService {
       ) as _i13.DioHttpClient);
 
   @override
-  _i8.Future<_i3.BaseResponse<_i16.SignUpResponse>> signUp(_i17.SignUpRequest? request) => (super.noSuchMethod(
+  _i8.Future<_i3.BaseResponse<_i16.SignUpResponse>> signUp({required _i17.SignUpRequest? request}) => (super.noSuchMethod(
         Invocation.method(
           #signUp,
-          [request],
+          [],
+          {#request: request},
         ),
         returnValue: _i8.Future<_i3.BaseResponse<_i16.SignUpResponse>>.value(_FakeBaseResponse_1<_i16.SignUpResponse>(
           this,
           Invocation.method(
             #signUp,
-            [request],
+            [],
+            {#request: request},
           ),
         )),
         returnValueForMissingStub: _i8.Future<_i3.BaseResponse<_i16.SignUpResponse>>.value(_FakeBaseResponse_1<_i16.SignUpResponse>(
           this,
           Invocation.method(
             #signUp,
-            [request],
+            [],
+            {#request: request},
           ),
         )),
       ) as _i8.Future<_i3.BaseResponse<_i16.SignUpResponse>>);
 
   @override
-  _i8.Future<_i3.BaseResponse<_i18.SignInResponse>> signIn(_i19.SignInRequest? request) => (super.noSuchMethod(
+  _i8.Future<_i3.BaseResponse<_i18.SignInResponse>> signIn({required _i19.SignInRequest? request}) => (super.noSuchMethod(
         Invocation.method(
           #signIn,
-          [request],
+          [],
+          {#request: request},
         ),
         returnValue: _i8.Future<_i3.BaseResponse<_i18.SignInResponse>>.value(_FakeBaseResponse_1<_i18.SignInResponse>(
           this,
           Invocation.method(
             #signIn,
-            [request],
+            [],
+            {#request: request},
           ),
         )),
         returnValueForMissingStub: _i8.Future<_i3.BaseResponse<_i18.SignInResponse>>.value(_FakeBaseResponse_1<_i18.SignInResponse>(
           this,
           Invocation.method(
             #signIn,
-            [request],
+            [],
+            {#request: request},
           ),
         )),
       ) as _i8.Future<_i3.BaseResponse<_i18.SignInResponse>>);

@@ -50,12 +50,14 @@ class ViewModelHelperService {
   }
 
   Future<T?> runLoadingFuture<T>(
-    Future<BaseResponse<T>> Function() request,
-    VoidCallback notifyListeners,
+    Future<BaseResponse<T>> Function()? request,
+    VoidCallback? notifyListeners,
   ) async {
+    assert(request != null, 'request is required');
+    assert(notifyListeners != null, 'notifyListeners is required');
     showLoading();
     try {
-      return tryCreateModel(await request(), notifyListeners);
+      return tryCreateModel(await request!(), notifyListeners!);
     } catch (e) {
       rethrow;
     } finally {
