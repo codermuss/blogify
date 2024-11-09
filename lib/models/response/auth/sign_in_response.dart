@@ -63,4 +63,16 @@ class User {
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  factory User.empty() => User(
+        id: 0,
+        username: '',
+        fullName: '',
+        email: '',
+        role: '',
+        avatar: '',
+        birthDate: DateTime.now(),
+        passwordChangedAt: DateTime.now(),
+        createdAt: DateTime.now(),
+      );
 }
