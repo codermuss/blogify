@@ -1,3 +1,4 @@
+import 'package:blogify/models/response/auth/sign_in_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'sign_up_response.g.dart';
@@ -15,6 +16,11 @@ class SignUpResponse {
   });
 
   factory SignUpResponse.fromJson(Map<String, dynamic> json) => _$SignUpResponseFromJson(json);
+
+  factory SignUpResponse.empty() => SignUpResponse(
+        user: User.empty(),
+        profile: Profile.empty(),
+      );
 }
 
 @JsonSerializable()
@@ -39,40 +45,12 @@ class Profile {
   });
 
   factory Profile.fromJson(Map<String, dynamic> json) => _$ProfileFromJson(json);
-}
 
-@JsonSerializable()
-class User {
-  @JsonKey(name: "id")
-  int id;
-  @JsonKey(name: "username")
-  String username;
-  @JsonKey(name: "full_name")
-  String fullName;
-  @JsonKey(name: "email")
-  String email;
-  @JsonKey(name: "role")
-  String role;
-  @JsonKey(name: "avatar")
-  String? avatar;
-  @JsonKey(name: "birth_date")
-  DateTime birthDate;
-  @JsonKey(name: "password_changed_at")
-  DateTime passwordChangedAt;
-  @JsonKey(name: "created_at")
-  DateTime createdAt;
-
-  User({
-    required this.id,
-    required this.username,
-    required this.fullName,
-    required this.email,
-    required this.role,
-    required this.avatar,
-    required this.birthDate,
-    required this.passwordChangedAt,
-    required this.createdAt,
-  });
-
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory Profile.empty() => Profile(
+        userId: 0,
+        bio: '',
+        postCount: 0,
+        likeCount: 0,
+        followerCount: 0,
+      );
 }

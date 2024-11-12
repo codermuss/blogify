@@ -73,8 +73,11 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i4.SignUpView: (data) {
+      final args = data.getArgs<SignUpViewArguments>(
+        orElse: () => const SignUpViewArguments(),
+      );
       return _i7.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i4.SignUpView(),
+        builder: (context) => _i4.SignUpView(key: args.key),
         settings: data,
       );
     },
@@ -85,8 +88,11 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i6.SignInView: (data) {
+      final args = data.getArgs<SignInViewArguments>(
+        orElse: () => const SignInViewArguments(),
+      );
       return _i7.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i6.SignInView(),
+        builder: (context) => _i6.SignInView(key: args.key),
         settings: data,
       );
     },
@@ -97,6 +103,50 @@ class StackedRouter extends _i1.RouterBase {
 
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
+}
+
+class SignUpViewArguments {
+  const SignUpViewArguments({this.key});
+
+  final _i7.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant SignUpViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode;
+  }
+}
+
+class SignInViewArguments {
+  const SignInViewArguments({this.key});
+
+  final _i7.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant SignInViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode;
+  }
 }
 
 extension NavigatorStateExtension on _i8.NavigationService {
@@ -118,13 +168,15 @@ extension NavigatorStateExtension on _i8.NavigationService {
     return navigateTo<dynamic>(Routes.startupView, id: routerId, preventDuplicates: preventDuplicates, parameters: parameters, transition: transition);
   }
 
-  Future<dynamic> navigateToSignUpView([
+  Future<dynamic> navigateToSignUpView({
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)? transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.signUpView, id: routerId, preventDuplicates: preventDuplicates, parameters: parameters, transition: transition);
+  }) async {
+    return navigateTo<dynamic>(Routes.signUpView,
+        arguments: SignUpViewArguments(key: key), id: routerId, preventDuplicates: preventDuplicates, parameters: parameters, transition: transition);
   }
 
   Future<dynamic> navigateToOnboardingView([
@@ -136,13 +188,15 @@ extension NavigatorStateExtension on _i8.NavigationService {
     return navigateTo<dynamic>(Routes.onboardingView, id: routerId, preventDuplicates: preventDuplicates, parameters: parameters, transition: transition);
   }
 
-  Future<dynamic> navigateToSignInView([
+  Future<dynamic> navigateToSignInView({
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)? transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.signInView, id: routerId, preventDuplicates: preventDuplicates, parameters: parameters, transition: transition);
+  }) async {
+    return navigateTo<dynamic>(Routes.signInView,
+        arguments: SignInViewArguments(key: key), id: routerId, preventDuplicates: preventDuplicates, parameters: parameters, transition: transition);
   }
 
   Future<dynamic> replaceWithHomeView([
@@ -163,13 +217,15 @@ extension NavigatorStateExtension on _i8.NavigationService {
     return replaceWith<dynamic>(Routes.startupView, id: routerId, preventDuplicates: preventDuplicates, parameters: parameters, transition: transition);
   }
 
-  Future<dynamic> replaceWithSignUpView([
+  Future<dynamic> replaceWithSignUpView({
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)? transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.signUpView, id: routerId, preventDuplicates: preventDuplicates, parameters: parameters, transition: transition);
+  }) async {
+    return replaceWith<dynamic>(Routes.signUpView,
+        arguments: SignUpViewArguments(key: key), id: routerId, preventDuplicates: preventDuplicates, parameters: parameters, transition: transition);
   }
 
   Future<dynamic> replaceWithOnboardingView([
@@ -181,12 +237,14 @@ extension NavigatorStateExtension on _i8.NavigationService {
     return replaceWith<dynamic>(Routes.onboardingView, id: routerId, preventDuplicates: preventDuplicates, parameters: parameters, transition: transition);
   }
 
-  Future<dynamic> replaceWithSignInView([
+  Future<dynamic> replaceWithSignInView({
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)? transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.signInView, id: routerId, preventDuplicates: preventDuplicates, parameters: parameters, transition: transition);
+  }) async {
+    return replaceWith<dynamic>(Routes.signInView,
+        arguments: SignInViewArguments(key: key), id: routerId, preventDuplicates: preventDuplicates, parameters: parameters, transition: transition);
   }
 }

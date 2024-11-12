@@ -8,13 +8,13 @@ import 'package:blogify/utilities/constants/app_api_paths.dart';
 import '../../models/base/base_response.dart';
 
 class AuthApiService with ApiServiceSupporter {
-  Future<BaseResponse<SignUpResponse>> signUp(SignUpRequest request) async => dioHttpClient.send<SignUpResponse, SignUpResponse>(
+  Future<BaseResponse<SignUpResponse>> signUp({required SignUpRequest request}) async => dioHttpClient.send<SignUpResponse, SignUpResponse>(
         path: AppApiPaths.signUp,
         fromJson: SignUpResponse.fromJson,
         data: request,
       );
 
-  Future<BaseResponse<SignInResponse>> signIn(SignInRequest request) async => dioHttpClient.send<SignInResponse, SignInResponse>(
+  Future<BaseResponse<SignInResponse>> signIn({required SignInRequest request}) async => dioHttpClient.send<SignInResponse, SignInResponse>(
         path: AppApiPaths.signIn,
         fromJson: SignInResponse.fromJson,
         data: request,

@@ -2,9 +2,11 @@ import 'package:blogify/app/app.router.dart';
 import 'package:blogify/extensions/string_extensions.dart';
 import 'package:blogify/extensions/widget_extensions.dart';
 import 'package:blogify/localization/locale_keys.g.dart';
+import 'package:blogify/models/request/auth/sign_up_request.dart';
 import 'package:blogify/ui/components/buttons/app_button.dart';
 import 'package:blogify/ui/components/inputs/app_text_field.dart';
 import 'package:blogify/ui/styles/spaces.dart';
+import 'package:blogify/ui/views/sign_up/sign_up_form_helper.dart';
 import 'package:blogify/ui/widgets/common/base_app_bar/base_app_bar.dart';
 import 'package:blogify/ui/widgets/common/base_view_skeleton/base_view_skeleton.dart';
 import 'package:blogify/ui/widgets/common/locale_text/locale_text.dart';
@@ -14,8 +16,8 @@ import 'package:stacked/stacked.dart';
 
 import 'sign_up_viewmodel.dart';
 
-class SignUpView extends StackedView<SignUpViewModel> {
-  const SignUpView({Key? key}) : super(key: key);
+class SignUpView extends StackedView<SignUpViewModel> with SignUpFormHelper {
+  SignUpView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
@@ -37,47 +39,53 @@ class SignUpView extends StackedView<SignUpViewModel> {
       ),
       body: SingleChildScrollView(
         child: Form(
-          key: viewModel.formKey,
+          key: formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Spaces.verticalSpaceMedium,
               AppTextFormField(
-                controller: viewModel.usernameController,
+                controller: usernameController,
                 hintText: LocaleKeys.username,
                 validator: Validators.validateuserame,
               ),
               AppTextFormField(
-                controller: viewModel.fullNameController,
+                controller: fullNameController,
                 hintText: LocaleKeys.fullName,
                 validator: Validators.validatefullName,
               ),
               AppTextFormField(
-                controller: viewModel.emailController,
+                controller: emailController,
                 hintText: LocaleKeys.email,
                 validator: Validators.validateEmail,
               ),
               AppTextFormField(
-                controller: viewModel.passwordController,
+                controller: passwordController,
                 hintText: LocaleKeys.password,
                 validator: Validators.validatePassword,
                 obscureText: viewModel.obscurePassword,
                 suffix: TextButton(onPressed: () => viewModel.setObscurePassword(!viewModel.obscurePassword), child: LocaleText(LocaleKeys.show)),
               ),
               AppTextFormField(
-                controller: viewModel.confirmPasswordController,
+                controller: confirmPasswordController,
                 hintText: LocaleKeys.password,
-                validator: (val) => Validators.validateConfirmPassword(val, viewModel.passwordController.text),
+                validator: (val) => Validators.validateConfirmPassword(val, passwordController.text),
                 obscureText: viewModel.obscureConfirmPassword,
                 suffix: TextButton(onPressed: () => viewModel.setObscureConfirmPassword(!viewModel.obscureConfirmPassword), child: LocaleText(LocaleKeys.show)),
               ),
               AppTextFormField(
-                controller: viewModel.birthdateController,
+                controller: birthdateController,
                 hintText: LocaleKeys.birthdate,
                 validator: Validators.validateBirthdate,
               ),
               Spaces.verticalSpaceMedium,
-              AppButton.primary(context: context, label: LocaleKeys.singUp.locale, onPressed: viewModel.signUp),
+              AppButton.primary(
+                  context: context,
+                  label: LocaleKeys.singUp.locale,
+                  onPressed: () {
+                    SignUpRequest? request = validateForm();
+                    if (request != null) viewModel.signUp(request: request);
+                  }),
               TextButton(onPressed: () {}, child: LocaleText(LocaleKeys.forgotYourPassword)),
             ],
           ).p16h,
@@ -94,6 +102,6 @@ class SignUpView extends StackedView<SignUpViewModel> {
   @override
   void onDispose(SignUpViewModel viewModel) {
     super.onDispose(viewModel);
-    viewModel.disposeForm();
+    disposeForm();
   }
 }
