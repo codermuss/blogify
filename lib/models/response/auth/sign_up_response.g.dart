@@ -6,7 +6,8 @@ part of 'sign_up_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SignUpResponse _$SignUpResponseFromJson(Map<String, dynamic> json) => SignUpResponse(
+SignUpResponse _$SignUpResponseFromJson(Map<String, dynamic> json) =>
+    SignUpResponse(
       user: User.fromJson(json['user'] as Map<String, dynamic>),
       profile: Profile.fromJson(json['profile'] as Map<String, dynamic>),
     );

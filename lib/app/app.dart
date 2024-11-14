@@ -13,6 +13,7 @@ import 'package:blogify/ui/views/sign_in/sign_in_view.dart';
 import 'package:blogify/services/app/hive_storage_service.dart';
 import 'package:blogify/services/app/encryption_service.dart';
 import 'package:blogify/services/app/view_model_helper_service.dart';
+import 'package:blogify/ui/views/feed/feed_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -22,6 +23,7 @@ import 'package:blogify/services/app/view_model_helper_service.dart';
     MaterialRoute(page: SignUpView),
     MaterialRoute(page: OnboardingView),
     MaterialRoute(page: SignInView),
+    MaterialRoute(page: FeedView),
 // @stacked-route
   ],
   dependencies: [
