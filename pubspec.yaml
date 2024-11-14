@@ -16,6 +16,10 @@ dependencies:
   # Responsive Design
   flutter_screenutil: ^5.9.3
 
+  #UI
+  curved_navigation_bar: ^1.0.3 # For the floating and curved effect
+  animated_bottom_navigation_bar: ^0.3.2 # For animations on tap
+
   # Util
   easy_localization: ^3.0.7
   i_toast: ^0.0.6
