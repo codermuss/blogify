@@ -1,12 +1,10 @@
 import 'package:blogify/ui/widgets/common/base_app_bar/base_app_bar.dart';
 import 'package:blogify/ui/widgets/common/base_view_skeleton/base_view_skeleton.dart';
-import 'package:blogify/ui/widgets/common/content_block_small/content_block_small.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../app/app.router.dart';
 import '../../../localization/locale_keys.g.dart';
-import '../../styles/spaces.dart';
+import '../../widgets/common/bottom_nav_bar/bottom_nav_bar.dart';
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -19,33 +17,19 @@ class HomeView extends StackedView<HomeViewModel> {
     Widget? child,
   ) {
     return BaseViewSkeleton(
-      appBar: BaseAppBar(
+      appBar: const BaseAppBar(
         title: LocaleKeys.home,
-        actions: [
-          IconButton(
-            onPressed: () {
-              viewModel.navigationService.clearStackAndShow(Routes.onboardingView);
-            },
-            icon: const Icon(Icons.close),
-          ),
+      ),
+      body: PageView(
+        controller: viewModel.pageController,
+        children: const [
+          Text('1'),
+          Text('2'),
+          Text('3'),
         ],
       ),
-      body: Column(
-        children: [
-          ContentBlockSmall.small(
-            imageUrl: 'https://picsum.photos/200/300',
-            title: 'Header',
-            subTitle: 'Hell want to use your yacht, and I dont want this thing smelling like fish.',
-            time: '8m ago',
-          ),
-          Spaces.verticalSpaceMedium,
-          ContentBlockSmall.large(
-            imageUrl: 'https://picsum.photos/200/300',
-            title: 'Header',
-            subTitle: 'Hell want to use your yacht, and I dont want this thing smelling like fish.',
-            time: '8m ago',
-          ),
-        ],
+      bottomNavigationBar: BottomNavBar(
+        onTabSelected: viewModel.changePage,
       ),
     );
   }
@@ -55,4 +39,10 @@ class HomeView extends StackedView<HomeViewModel> {
     BuildContext context,
   ) =>
       HomeViewModel();
+
+  @override
+  void onDispose(HomeViewModel viewModel) {
+    viewModel.disposeViewModel();
+    super.onDispose(viewModel);
+  }
 }

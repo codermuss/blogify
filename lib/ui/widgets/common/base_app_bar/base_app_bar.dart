@@ -64,14 +64,16 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
 
         /// MARK: Appbar üzerinde herhangi bir aksiyon alması durumunda
-        if (actions != null)
-          Expanded(
-            flex: 1,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: actions!,
-            ),
-          )
+
+        Expanded(
+          flex: 1,
+          child: actions != null
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: actions!,
+                )
+              : const SizedBox.shrink(),
+        )
       ],
     );
   }
